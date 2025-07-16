@@ -13,7 +13,7 @@ function Button({
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 rounded-md bg-gray-800 text-white  ${className}`}
+      className={`px-4 py-2 bg-black text-white cursor-pointer hover:scale-105 hover:bg-gray-900 transition-all duration-300 ${className}`}
       disabled={disabled}
       type={type}
       style={style}

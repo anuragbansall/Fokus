@@ -51,7 +51,7 @@ function Navbar() {
           </span>
         ))}
 
-        <Button>Buy Now</Button>
+        <Button className="rounded-md">Buy Now</Button>
       </div>
     </div>
   );
