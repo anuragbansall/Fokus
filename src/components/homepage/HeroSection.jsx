@@ -3,6 +3,7 @@ import heroVideo from "../../assets/hero-video.mp4";
 import Button from "../Button";
 import watermelon from "../../assets/watermelon.png";
 import lemon from "../../assets/lemon.png";
+import LiquidGlass from "../LiquidGlass";
 
 function HeroSection() {
   const fruits = [
@@ -21,7 +22,7 @@ function HeroSection() {
   ];
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen max-h-[800px] relative">
       <video
         src={heroVideo}
         autoPlay
@@ -30,7 +31,7 @@ function HeroSection() {
         className="w-full h-full object-cover object-top"
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="absolute z-10 left-1/2 bottom-[6rem] -translate-x-1/2 px-16 py-2 rounded-full border border-white/50 bg-white/10 backdrop-blur-md group overflow-visible">
+        <LiquidGlass className="absolute left-1/2 -translate-x-1/2 bottom-25 px-16 py-2 rounded-full group">
           {/* Fruit Icons */}
           {fruits.map((item) => (
             <img
@@ -46,7 +47,7 @@ function HeroSection() {
           <Button className="w-[12rem] rounded-full text-lg z-10 relative">
             Buy Now
           </Button>
-        </div>
+        </LiquidGlass>
       </div>
     </div>
   );

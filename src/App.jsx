@@ -1,13 +1,16 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
+import Container from "./components/container";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <HomePage />
-      <div className="h-screen"></div>
+    <div className="bg-[#F5F5DC]">
+      <Container>
+        <Navbar />
+        <HomePage />
+        <div className="h-screen"></div>
+      </Container>
     </div>
   );
 }
