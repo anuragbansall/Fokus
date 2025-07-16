@@ -9,7 +9,6 @@ function App() {
       <Container>
         <Navbar />
         <HomePage />
-        <div className="h-screen"></div>
       </Container>
     </div>
   );
