@@ -7,6 +7,7 @@ function App() {
     <div>
       <Navbar />
       <HomePage />
+      <div className="h-screen"></div>
     </div>
   );
 }

@@ -2,8 +2,6 @@ import React from "react";
 import heroVideo from "../../assets/hero-video.mp4";
 import Button from "../Button";
 import watermelon from "../../assets/watermelon.png";
-import strawberry from "../../assets/strawberry.png";
-import kiwi from "../../assets/kiwi.png";
 import lemon from "../../assets/lemon.png";
 
 function HeroSection() {

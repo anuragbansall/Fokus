@@ -25,7 +25,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="w-full bg-white flex items-center justify-between px-8 py-4">
+    <div className="top-0 left-0 right-0 z-[999] w-full bg-[#ffc53e] flex items-center justify-between px-8 py-4">
       <img src={logo} alt="Logo" className="h-12" />
 
       <ul className="flex space-x-6">
