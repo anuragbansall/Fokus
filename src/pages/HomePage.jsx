@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "../components/homepage/HeroSection";
 import FavoritesSection from "../components/homepage/FavoritesSection";
 import CommercialSection from "../components/homepage/CommercialSection";
+import WhyUsSection from "../components/homepage/WhyUsSection";
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
       <HeroSection />
       <FavoritesSection />
       <CommercialSection />
+      <WhyUsSection />
     </div>
   );
 }
