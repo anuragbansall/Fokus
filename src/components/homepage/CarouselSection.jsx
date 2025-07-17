@@ -7,7 +7,7 @@ import video4 from "../../assets/video-4.mp4";
 
 function CarouselSection() {
   return (
-    <div className="w-full mx-auto mt-8">
+    <div className="w-full mx-auto p-6">
       <MediaCarousel type="video" data={[video1, video2, video3, video4]} />
     </div>
   );

@@ -5,6 +5,7 @@ import CommercialSection from "../components/homepage/CommercialSection";
 import WhyUsSection from "../components/homepage/WhyUsSection";
 import KnowUsSection from "../components/homepage/KnowUsSection";
 import CarouselSection from "../components/homepage/CarouselSection";
+import LatestContentSection from "../components/homepage/LatestContentSection";
 
 function HomePage() {
   return (
@@ -15,6 +16,7 @@ function HomePage() {
       <WhyUsSection />
       <KnowUsSection />
       <CarouselSection />
+      <LatestContentSection />
     </div>
   );
 }
