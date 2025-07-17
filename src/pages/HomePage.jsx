@@ -6,6 +6,7 @@ import WhyUsSection from "../components/homepage/WhyUsSection";
 import KnowUsSection from "../components/homepage/KnowUsSection";
 import CarouselSection from "../components/homepage/CarouselSection";
 import LatestContentSection from "../components/homepage/LatestContentSection";
+import ReviewsSection from "../components/homepage/ReviewsSection";
 
 function HomePage() {
   return (
@@ -17,6 +18,7 @@ function HomePage() {
       <KnowUsSection />
       <CarouselSection />
       <LatestContentSection />
+      <ReviewsSection />
     </div>
   );
 }

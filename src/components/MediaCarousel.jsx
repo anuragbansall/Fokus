@@ -12,7 +12,7 @@ function MediaCarousel({ children }) {
           key={index}
         >
           {childrenArray.map((child, itemIndex) => (
-            <div key={`${index}-${itemIndex}`} className="w-[16rem]">
+            <div key={`${index}-${itemIndex}`} className="">
               {child}
             </div>
           ))}
