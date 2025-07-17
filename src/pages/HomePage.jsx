@@ -3,6 +3,7 @@ import HeroSection from "../components/homepage/HeroSection";
 import FavoritesSection from "../components/homepage/FavoritesSection";
 import CommercialSection from "../components/homepage/CommercialSection";
 import WhyUsSection from "../components/homepage/WhyUsSection";
+import KnowUsSection from "../components/homepage/KnowUsSection";
 
 function HomePage() {
   return (
@@ -11,6 +12,7 @@ function HomePage() {
       <FavoritesSection />
       <CommercialSection />
       <WhyUsSection />
+      <KnowUsSection />
     </div>
   );
 }
