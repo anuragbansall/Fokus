@@ -4,6 +4,7 @@ import FavoritesSection from "../components/homepage/FavoritesSection";
 import CommercialSection from "../components/homepage/CommercialSection";
 import WhyUsSection from "../components/homepage/WhyUsSection";
 import KnowUsSection from "../components/homepage/KnowUsSection";
+import CarouselSection from "../components/homepage/CarouselSection";
 
 function HomePage() {
   return (
@@ -13,6 +14,7 @@ function HomePage() {
       <CommercialSection />
       <WhyUsSection />
       <KnowUsSection />
+      <CarouselSection />
     </div>
   );
 }
