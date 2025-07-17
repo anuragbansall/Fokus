@@ -26,7 +26,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="top-0 left-0 right-0 z-[999] w-full bg-[#ffc53e] flex items-center justify-between px-8 py-4">
+    <div className="top-0 left-0 right-0 z-[999] w-full bg-[#F5F5DC] flex items-center justify-between px-8 py-4 shadow-lg">
       <img src={logo} alt="Logo" className="h-12" />
 
       <LiquidGlass className="px-20 py-2 rounded-full">
