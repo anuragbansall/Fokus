@@ -10,7 +10,7 @@ import ReviewsSection from "../components/homepage/ReviewsSection";
 
 function HomePage() {
   return (
-    <div className="w-full min-h-screen">
+    <main className="w-full min-h-screen">
       <HeroSection />
       <FavoritesSection />
       <CommercialSection />
@@ -19,7 +19,7 @@ function HomePage() {
       <CarouselSection />
       <LatestContentSection />
       <ReviewsSection />
-    </div>
+    </main>
   );
 }
 
