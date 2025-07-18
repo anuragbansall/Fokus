@@ -33,19 +33,21 @@ function CommercialSection() {
         "Boost your energy levels naturally with our specially formulated drinks.",
     },
   ];
+
   return (
-    <div className="w-full p-6 bg-[#94DA49]">
+    <section className="w-full p-6 bg-[#94DA49]">
       <h2 className="text-4xl text-center font-semibold my-4">
         Stay Active, Stay Hydrated,{" "}
         <span className="text-white font-bold italic">Stay Fokus</span>
       </h2>
 
-      <div className="w-full flex justify-between items-center mt-16 mb-8 px-8">
-        <div className="flex flex-col gap-8">
+      <div className="w-full flex flex-col lg:flex-row justify-between items-center mt-16 mb-8 px-4 lg:px-8 gap-8 gap-y-18">
+        {/* Features */}
+        <div className="flex flex-col gap-8 max-w-sm w-full">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="p-4 rounded-lg max-w-sm -rotate-2 bg-white/10"
+              className="p-4 rounded-lg bg-white/10 md:-rotate-2"
               style={{
                 boxShadow: "5px 5px 0 10px #ffffff",
               }}
@@ -61,8 +63,9 @@ function CommercialSection() {
           ))}
         </div>
 
+        {/* Video */}
         <VideoFrame
-          className="w-[25rem] h-[36rem] mx-auto rounded-md overflow-hidden rotate-2"
+          className="max-w-full w-[25rem] aspect-[9/16] mx-auto rounded-md overflow-hidden md:rotate-2"
           style={{
             boxShadow: "10px 10px 0 20px #ffffff",
           }}
@@ -72,12 +75,13 @@ function CommercialSection() {
             muted
             autoPlay
             loop
+            playsInline
             src={kiwiLemonCommercial}
             type="video/webm"
           />
         </VideoFrame>
       </div>
-    </div>
+    </section>
   );
 }
 
