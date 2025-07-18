@@ -1,8 +1,20 @@
 import React from "react";
 
-function VideoFrame({ children, className, ...props }) {
+function VideoFrame({
+  children,
+  className = "",
+  style = {},
+  ariaLabel = "Video content",
+  ...props
+}) {
   return (
-    <div className={`${className}`} {...props}>
+    <div
+      className={`${className}`}
+      style={style}
+      role="region"
+      aria-label={ariaLabel}
+      {...props}
+    >
       {children}
     </div>
   );
