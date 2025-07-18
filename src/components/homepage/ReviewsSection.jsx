@@ -35,12 +35,12 @@ function ReviewsSection() {
   ];
 
   return (
-    <div className="w-full p-6 border-t-100 border-[#FFE060]">
-      <h2 className="text-4xl font-semibold my-8 text-center">
+    <section className="w-full p-6 border-t-100 border-[#FFE060]">
+      <h2 className="text-4xl font-semibold my-8 text-center leading-snug">
         What Your Favourites Say
       </h2>
 
-      <div className="py-6">
+      <div className="max-w-7xl mx-auto py-6">
         <MediaCarousel>
           {reviews.map((review, index) => (
             <ReviewCard
@@ -52,7 +52,7 @@ function ReviewsSection() {
           ))}
         </MediaCarousel>
       </div>
-    </div>
+    </section>
   );
 }
 
