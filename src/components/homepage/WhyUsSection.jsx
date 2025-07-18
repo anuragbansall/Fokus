@@ -39,11 +39,11 @@ const comparisonData = [
 
 function WhyUsSection() {
   return (
-    <div className="w-full p-6">
+    <section className="w-full p-6">
       <h2 className="text-4xl font-semibold my-4 text-center">Why Fokus</h2>
 
       <div
-        className="relative max-w-6xl mx-auto my-12 p-4 bg-white rounded-lg shadow-lg"
+        className="relative max-w-6xl mx-auto my-12 p-4 bg-white rounded-lg shadow-lg overflow-x-auto md:overflow-visible scrollbar-hide"
         style={{
           boxShadow: "10px 10px 0 20px #ffc53e",
         }}
@@ -51,10 +51,11 @@ function WhyUsSection() {
         <img
           src={lemon}
           alt="Lemon"
-          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-32 h-auto rotate-animation"
+          loading="lazy"
+          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-32 h-auto rotate-animation pointer-events-none select-none z-10 hidden md:block"
         />
 
-        <table className="w-full table-fixed border-collapse">
+        <table className="w-full min-w-[800px] table-fixed border-collapse">
           <thead>
             <tr>
               <th className="p-2 w-1/4"></th>
@@ -62,7 +63,7 @@ function WhyUsSection() {
                 <img src={logo} alt="Fokus Logo" className="w-36 mx-auto" />
               </th>
               <th className="text-xl px-8 py-4 border w-1/4 font-semibold">
-                <h3 className="text-2xl font-medium">Generic Energy Drink </h3>
+                <h3 className="text-2xl font-medium">Generic Energy Drink</h3>
               </th>
               <th className="text-xl px-8 py-4 border w-1/4 font-semibold">
                 <h3 className="text-2xl font-medium">Generic Sports Drink</h3>
@@ -73,13 +74,13 @@ function WhyUsSection() {
           <tbody>
             {comparisonData.map((row, index) => (
               <tr key={index}>
-                <td className="text-xl px-8 py-4 border w-1/4 font-normal">
+                <td className="text-xl px-8 py-4 border font-normal">
                   <h3>{row.label}</h3>
                 </td>
                 {row.values.map((value, i) => (
                   <td
                     key={i}
-                    className={`px-8 py-4 border w-1/4 ${
+                    className={`px-8 py-4 border ${
                       i === 0 ? "bg-[#FF4F61]" : ""
                     }`}
                   >
@@ -91,7 +92,7 @@ function WhyUsSection() {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 }
 
