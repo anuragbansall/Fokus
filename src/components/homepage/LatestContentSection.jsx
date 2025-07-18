@@ -4,7 +4,10 @@ import kiwiLemonBottle from "../../assets/kiwi-lemon-bottle.png";
 
 function LatestContentSection() {
   return (
-    <div className="relative w-full p-6 border-t-100 border-[#94DA49] overflow-hidden">
+    <section
+      className="relative w-full p-6 border-t-100 border-[#94DA49] overflow-hidden"
+      aria-label="Latest from Fokus Community"
+    >
       <h2 className="text-4xl font-semibold my-8 text-center">
         Latest from Fokus Community
       </h2>
@@ -21,23 +24,21 @@ function LatestContentSection() {
       />
 
       <div
-        className="relative my-18 mx-auto w-fit rounded-lg z-10 overflow-hidden"
+        className="relative my-18 mx-auto w-full max-w-[800px] aspect-video rounded-lg z-10 overflow-hidden"
         style={{
           boxShadow: "10px 10px 0 20px #ffc53e",
         }}
       >
         <iframe
-          width="800"
-          height="450"
+          className="w-full h-full"
           src="https://www.youtube.com/embed/aqPSd-Ecrrs?si=Zy93ipmjLjMa9DGo"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
-    </div>
+    </section>
   );
 }
 
