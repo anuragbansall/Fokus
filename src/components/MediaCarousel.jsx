@@ -1,20 +1,17 @@
 import React from "react";
 
 function MediaCarousel({ children }) {
-  // Convert children to array (in case it's a single child)
   const childrenArray = React.Children.toArray(children);
 
   return (
-    <div className="relative w-full py-6 flex items-center overflow-x-hidden">
+    <div className="relative w-full py-6 flex items-center overflow-hidden">
       {[...Array(4)].map((_, index) => (
         <div
-          className="shrink-0 flex items-center pr-12 gap-12 marquee-left"
           key={index}
+          className="shrink-0 flex items-center pr-12 gap-12 marquee-left"
         >
-          {childrenArray.map((child, itemIndex) => (
-            <div key={`${index}-${itemIndex}`} className="">
-              {child}
-            </div>
+          {childrenArray.map((child, idx) => (
+            <div key={`${index}-${idx}`}>{child}</div>
           ))}
         </div>
       ))}
