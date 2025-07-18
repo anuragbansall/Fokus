@@ -22,34 +22,43 @@ function HeroSection() {
   ];
 
   return (
-    <div className="w-full h-screen max-h-[800px] relative">
+    <section className="relative w-full h-screen max-h-[800px] overflow-hidden">
+      {/* Background Video */}
       <video
         src={heroVideo}
         autoPlay
         loop
         muted
-        className="w-full h-full object-cover object-top"
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover object-top"
+        aria-hidden="true"
       />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <LiquidGlass className="absolute left-1/2 -translate-x-1/2 bottom-25 px-16 py-2 rounded-full group">
+
+      {/* Overlay with CTA */}
+      <div className="absolute inset-0 flex items-center justify-center px-4">
+        <LiquidGlass className="absolute left-1/2 -translate-x-1/2 bottom-[6rem] px-8 sm:px-16 py-2 rounded-full group">
           {/* Fruit Icons */}
-          {fruits.map((item) => (
+          {fruits.map((fruit) => (
             <img
-              key={item.id}
-              src={item.image}
-              alt={item.name}
-              style={item.style}
-              className="h-12 absolute opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+              key={fruit.id}
+              src={fruit.image}
+              alt={fruit.name}
+              style={fruit.style}
+              className="h-10 sm:h-12 absolute opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+              loading="lazy"
             />
           ))}
 
           {/* Buy Now Button */}
-          <Button className="w-[12rem] rounded-full text-lg z-10 relative">
+          <Button
+            className="w-40 sm:w-48 rounded-full text-base sm:text-lg relative z-10"
+            aria-label="Buy Fokus Energy Drink Now"
+          >
             Buy Now
           </Button>
         </LiquidGlass>
       </div>
-    </div>
+    </section>
   );
 }
 
