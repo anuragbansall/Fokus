@@ -26,39 +26,50 @@ function Navbar() {
   ];
 
   return (
-    <div className="top-0 left-0 right-0 z-[999] w-full bg-[#F5F5DC] flex items-center justify-between px-8 py-4 shadow-lg">
-      <img src={logo} alt="Logo" className="h-12" />
+    <header className="sticky top-0 z-[999] w-full bg-[#F5F5DC] shadow-md">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
+        {/* Logo */}
+        <a href="/" aria-label="Homepage">
+          <img
+            src={logo}
+            alt="Fokus Logo"
+            className="h-10 md:h-12 object-contain"
+          />
+        </a>
 
-      <LiquidGlass className="px-20 py-2 rounded-full">
-        <ul className="flex space-x-6">
-          {navItems.map((item) => (
-            <li key={item.name} className="group flex flex-col items-center">
-              <a href={item.href} className="text-gray-800 text-lg font-medium">
-                {item.name}
-              </a>
+        {/* Navigation Links */}
+        <LiquidGlass className="hidden md:flex px-6 py-2 rounded-full">
+          <ul className="flex space-x-6">
+            {navItems.map((item) => (
+              <li key={item.name} className="group relative">
+                <a
+                  href={item.href}
+                  className="text-gray-800 text-base font-medium hover:text-black transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+                <span className="absolute left-0 bottom-0 h-0.5 w-0 group-hover:w-full bg-gray-800 rounded transition-all duration-300"></span>
+              </li>
+            ))}
+          </ul>
+        </LiquidGlass>
 
-              <span className="w-0 group-hover:w-full h-0.5 transition-all duration-300 bg-gray-800 rounded"></span>
-            </li>
-          ))}
-        </ul>
-      </LiquidGlass>
-
-      <LiquidGlass className="px-4 py-2 rounded-full">
-        <div className="flex items-center space-x-6">
+        {/* Icons + CTA */}
+        <LiquidGlass className="flex items-center space-x-4 px-4 py-2 rounded-full">
           {navIcons.map((item, index) => (
-            <span
+            <a
               key={index}
-              className="text-gray-800 text-2xl hover:text-gray-600 transition-colors duration-300 cursor-pointer"
+              href={item.href}
               aria-label={item.name}
+              className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
             >
               {item.icon}
-            </span>
+            </a>
           ))}
-
-          <Button className="rounded-l-md rounded-r-full">Buy Now</Button>
-        </div>
-      </LiquidGlass>
-    </div>
+          <Button className="rounded-full text-sm md:text-base">Buy Now</Button>
+        </LiquidGlass>
+      </nav>
+    </header>
   );
 }
 
