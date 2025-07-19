@@ -23,16 +23,16 @@ function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full h-screen max-h-[800px] overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full object-cover object-top">
+      <div className="w-full object-cover object-top max-h-screen">
         <video
           src={heroBgDesktop}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-top hidden md:block"
+          className="w-full h-full object-cover object-top hidden md:block aspect-[16/9] max-h-full"
           aria-hidden="true"
         />
         <video
@@ -41,13 +41,13 @@ function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-top block md:hidden"
+          className="w-full h-full object-cover object-top block md:hidden aspect-[9/16]"
           aria-hidden="true"
         />
       </div>
 
       {/* Overlay with CTA */}
-      <div className="absolute inset-0 flex items-center justify-center px-4">
+      <div className="absolute z-10 inset-0 flex items-center justify-center px-4">
         <LiquidGlass className="absolute left-1/2 -translate-x-1/2 bottom-[6rem] px-8 sm:px-16 py-2 rounded-full group">
           {/* Fruit Icons */}
           {fruits.map((fruit) => (
