@@ -49,7 +49,7 @@ function CommercialSection() {
               key={index}
               className="p-4 rounded-lg bg-white/10 md:-rotate-2"
               style={{
-                boxShadow: "5px 5px 0 10px #ffffff",
+                boxShadow: "2.5px 2.5px 0 5px #ffffff",
               }}
             >
               <img
@@ -65,9 +65,9 @@ function CommercialSection() {
 
         {/* Video */}
         <VideoFrame
-          className="max-w-full w-[25rem] aspect-[9/16] mx-auto rounded-md overflow-hidden md:rotate-2"
+          className="max-w-full w-[22rem] aspect-[9/16] mx-auto rounded-md overflow-hidden md:rotate-2"
           style={{
-            boxShadow: "10px 10px 0 20px #ffffff",
+            boxShadow: "5px 5px 0 10px #ffffff",
           }}
         >
           <video

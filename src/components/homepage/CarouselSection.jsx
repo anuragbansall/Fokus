@@ -20,7 +20,7 @@ function CarouselSection() {
             playsInline
             className="w-[16rem] aspect-[9/16] rounded-lg shadow-lg"
             style={{
-              boxShadow: "5px 5px 0 10px rgba(255, 255, 255, 0.5)",
+              boxShadow: "2.5px 2.5px 0 5px rgba(255, 255, 255, 0.5)",
             }}
           />
         ))}

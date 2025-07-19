@@ -42,7 +42,7 @@ function ProductsSection() {
             className="relative rounded-lg p-6 flex flex-col justify-between group"
             style={{
               backgroundColor: product.color,
-              boxShadow: "2.5px 2.5px 0 5px #000",
+              boxShadow: "2.5px 2.5px 0 5px #000000cc",
             }}
           >
             <img
@@ -50,7 +50,7 @@ function ProductsSection() {
               alt={product.name}
               className="w-[20rem] object-cover mx-auto mb-6"
             />
-            <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-nowrap bg-white/80 p-2 rounded -rotate-10 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:scale-0 group-hover:scale-100 z-3">
+            <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-nowrap bg-white/80 p-2 rounded -rotate-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:scale-0 group-hover:scale-100 z-3 group-active:opacity-100 group-active:scale-100">
               {product.name}
             </h3>
             <div className="flex flex-col items-center gap-4">

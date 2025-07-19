@@ -3,9 +3,9 @@ import React from "react";
 function ReviewCard({ name, image, reviewText }) {
   return (
     <figure
-      className="bg-[#ffffea] rounded-lg overflow-hidden w-[22rem] border border-[#FFE060]"
+      className="bg-[#ffffffcc] rounded-lg overflow-hidden w-[22rem]"
       style={{
-        boxShadow: "5px 5px 0 10px #ffffff",
+        boxShadow: "2.5px 2.5px 0 5px #ffffff",
       }}
     >
       <div className="bg-zinc-100 w-full aspect-[1/1]">

@@ -50,7 +50,7 @@ function Footer() {
         aria-label="Newsletter Subscription"
         className="rounded-xl p-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 bg-white"
         style={{
-          boxShadow: "5px 5px 0 10px rgba(0, 0, 0, 0.1)",
+          boxShadow: "2.5px 2.5px 0 5px rgba(0, 0, 0, 0.7)",
         }}
       >
         <h2 className="text-2xl font-semibold">Stay in Fokus!</h2>

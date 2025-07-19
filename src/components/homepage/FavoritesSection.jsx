@@ -106,12 +106,12 @@ function FavoritesSection() {
             <img
               src={bottle.ingredients[0]}
               alt=""
-              className="absolute top-20 left-26 md:left-30 w-[6rem] -translate-x-1/2 object-cover md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
+              className="absolute top-20 left-22 md:left-34 w-[6rem] -translate-x-1/2 object-cover md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
             />
             <img
               src={bottle.ingredients[1]}
               alt=""
-              className="absolute top-60 left-60 w-[6rem] -translate-x-1/2 object-cover z-3 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
+              className="absolute top-60 left-50 md:left-62 w-[6rem] -translate-x-1/2 object-cover z-3 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
             />
 
             <h3 className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xl font-semibold text-nowrap bg-white/80 p-2 rounded -rotate-10 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:scale-0 group-hover:scale-100 z-3">
