@@ -38,7 +38,7 @@ function Navbar() {
         </a>
 
         {/* Navigation Links */}
-        <LiquidGlass className="hidden md:flex px-6 py-2 rounded-full">
+        <LiquidGlass className="hidden lg:flex px-6 py-2 rounded-full">
           <ul className="flex space-x-6">
             {navItems.map((item) => (
               <li key={item.name} className="group relative">
