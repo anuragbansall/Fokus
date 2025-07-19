@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Container from "./components/container";
 import Footer from "./components/Footer";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Navbar />
       <main className="flex-grow">
         <Container>
-          <HomePage />
+          {/* <HomePage /> */}
+          <ProductsPage />
         </Container>
       </main>
       <Footer />
