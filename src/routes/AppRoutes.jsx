@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"; // Use Routes instead of Router
-import HomePage from "../Pages/HomePage";
-import ProductsPage from "../Pages/ProductsPage";
+import HomePage from "../pages/HomePage";
+import ProductsPage from "../pages/ProductsPage";
 
 const AppRoutes = () => {
   return (
