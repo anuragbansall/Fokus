@@ -5,70 +5,67 @@ import fightOffFatigue from "../../assets/fight-off-fatigue.png";
 import madeWithCoconut from "../../assets/made-with-coconut.png";
 import noAddedSugar from "../../assets/no-added-sugar.png";
 import increaseYourEnergy from "../../assets/increase-your-energy.png";
+import LiquidGlass from "../LiquidGlass";
 
 function CommercialSection() {
   const features = [
     {
       image: fightOffFatigue,
       title: "Fight off fatigue",
-      description:
-        "Our drinks are designed to keep you energized throughout the day.",
+      description: "Stay refreshed and energized all day long.",
+      color: "#FF6262",
     },
     {
       image: madeWithCoconut,
       title: "Made with coconut",
-      description:
-        "Experience the refreshing taste of our coconut-based beverages.",
+      description: "Naturally hydrating coconut base for smooth energy.",
+      color: "#94DA49",
     },
     {
       image: noAddedSugar,
       title: "No added sugar",
-      description:
-        "Enjoy a guilt-free hydration experience with no added sugars.",
+      description: "Guilt-free taste, zero added sugar, all refreshment.",
+      color: "#FFE060",
     },
     {
       image: increaseYourEnergy,
       title: "Increase your energy",
-      description:
-        "Boost your energy levels naturally with our specially formulated drinks.",
+      description: "Fuel your focus without the jitters or crash.",
+      color: "#ffc53e",
     },
   ];
 
   return (
-    <section className="w-full p-6 bg-[#94DA49]">
-      <h2 className="text-4xl text-center font-semibold my-4">
+    <section className="w-full py-16 px-6 bg-[#94DA49] overflow-hidden">
+      <h2 className="text-4xl text-center font-semibold mb-16 text-black">
         Stay Active, Stay Hydrated,{" "}
         <span className="text-white font-bold italic">Stay Fokus</span>
       </h2>
 
-      <div className="w-full flex flex-col lg:flex-row justify-between items-center mt-16 mb-8 px-4 lg:px-8 gap-8 gap-y-18">
-        {/* Features */}
-        <div className="flex flex-col gap-8 max-w-sm w-full">
-          {features.map((feature, index) => (
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8 items-center">
+        {/* Left Features */}
+        <div className="flex flex-col gap-8">
+          {features.slice(0, 2).map((feature, idx) => (
             <div
-              key={index}
-              className="p-4 rounded-lg bg-white/10 md:-rotate-2"
-              style={{
-                boxShadow: "2.5px 2.5px 0 5px #ffffff",
-              }}
+              key={idx}
+              className="p-6 rounded-2xl shadow-lg transform backdrop-blur-lg"
+              style={{ boxShadow: "2.5px 2.5px 0 5px rgba(255,255,255,0.8)" }}
             >
               <img
                 src={feature.image}
                 alt={feature.title}
-                className="w-32 h-auto object-cover rounded-md mb-4"
+                className="w-30 h-auto mb-4 rounded-lg object-cover"
               />
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-700">{feature.description}</p>
+              <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
+              <p className="opacity-90 text-lg">{feature.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Video */}
+        {/* Center Video */}
         <VideoFrame
-          className="max-w-full w-[22rem] aspect-[9/16] mx-auto rounded-md overflow-hidden md:rotate-2"
-          style={{
-            boxShadow: "5px 5px 0 10px #ffffff",
-          }}
+          className="mx-auto rounded-2xl overflow-hidden transform transition-all duration-500 w-full max-w-[20rem] aspect-[9/16] hidden md:block"
+          style={{ boxShadow: "2.5px 2.5px 0 5px #FFE060" }}
         >
           <video
             className="w-full h-full object-cover"
@@ -80,6 +77,25 @@ function CommercialSection() {
             type="video/webm"
           />
         </VideoFrame>
+
+        {/* Right Features */}
+        <div className="flex flex-col gap-8">
+          {features.slice(2).map((feature, idx) => (
+            <div
+              key={idx}
+              className="p-6 rounded-2xl shadow-lg transform backdrop-blur-lg"
+              style={{ boxShadow: "2.5px 2.5px 0 5px rgba(255,255,255,0.8)" }}
+            >
+              <img
+                src={feature.image}
+                alt={feature.title}
+                className="w-30 h-auto mb-4 rounded-lg object-cover"
+              />
+              <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
+              <p className="opacity-90 text-lg">{feature.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
