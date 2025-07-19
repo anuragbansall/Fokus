@@ -1,5 +1,6 @@
 import React from "react";
-import heroVideo from "../../assets/hero-video.mp4";
+import heroBgDesktop from "../../assets/hero-bg-desktop.mp4";
+import heroBgMobile from "../../assets/hero-bg-mobile.mp4";
 import Button from "../Button";
 import watermelon from "../../assets/watermelon.png";
 import lemon from "../../assets/lemon.png";
@@ -24,15 +25,26 @@ function HeroSection() {
   return (
     <section className="relative w-full h-screen max-h-[800px] overflow-hidden">
       {/* Background Video */}
-      <video
-        src={heroVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover object-top"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 w-full h-full object-cover object-top">
+        <video
+          src={heroBgDesktop}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-top hidden md:block"
+          aria-hidden="true"
+        />
+        <video
+          src={heroBgMobile}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-top block md:hidden"
+          aria-hidden="true"
+        />
+      </div>
 
       {/* Overlay with CTA */}
       <div className="absolute inset-0 flex items-center justify-center px-4">
