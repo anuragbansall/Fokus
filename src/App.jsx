@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
 import Container from "./components/container";
 import Footer from "./components/Footer";
-import ProductsPage from "./pages/ProductsPage";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
@@ -11,8 +10,7 @@ function App() {
       <Navbar />
       <main className="flex-grow">
         <Container>
-          {/* <HomePage /> */}
-          <ProductsPage />
+          <AppRoutes />
         </Container>
       </main>
       <Footer />

@@ -4,6 +4,7 @@ import { VscAccount } from "react-icons/vsc";
 import { IoMdCart } from "react-icons/io";
 import Button from "./Button";
 import LiquidGlass from "./LiquidGlass";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const navItems = [
@@ -42,12 +43,13 @@ function Navbar() {
           <ul className="flex space-x-6">
             {navItems.map((item) => (
               <li key={item.name} className="group relative">
-                <a
-                  href={item.href}
+                <NavLink
+                  to={item.href}
+                  aria-label={item.name}
                   className="text-gray-800 text-base font-medium hover:text-black transition-colors duration-200"
                 >
                   {item.name}
-                </a>
+                </NavLink>
                 <span className="absolute left-0 bottom-0 h-0.5 w-0 group-hover:w-full bg-gray-800 rounded transition-all duration-300"></span>
               </li>
             ))}
@@ -57,14 +59,14 @@ function Navbar() {
         {/* Icons + CTA */}
         <LiquidGlass className="flex items-center space-x-4 px-4 py-2 rounded-full">
           {navIcons.map((item, index) => (
-            <a
+            <NavLink
               key={index}
-              href={item.href}
+              to={item.href}
               aria-label={item.name}
               className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
             >
               {item.icon}
-            </a>
+            </NavLink>
           ))}
           <Button className="rounded-full text-sm md:text-base">Buy Now</Button>
         </LiquidGlass>
