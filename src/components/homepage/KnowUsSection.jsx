@@ -2,6 +2,7 @@ import React from "react";
 import knowUsImage from "../../assets/know-us.png";
 import abhishekLeftImage from "../../assets/abhishek-left.png";
 import nischayRightImage from "../../assets/nischay-right.png";
+import abhishekNischayImage from "../../assets/abhishek-nischay.png";
 import strawberryImage from "../../assets/strawberry.png";
 import mangoImage from "../../assets/mango.png";
 
@@ -9,7 +10,7 @@ function KnowUsSection() {
   return (
     <section className="w-full p-6 py-18 bg-[#94DA49] flex flex-col gap-12 items-center justify-center overflow-hidden">
       <div
-        className="relative w-full min-h-[550px] max-w-6xl mx-auto flex flex-col items-center justify-center gap-y-12 bg-[#B2F56F] p-8 rounded-lg shadow-lg"
+        className="relative w-full sm:min-h-[550px] max-w-6xl mx-auto flex flex-col items-center justify-center gap-y-12 bg-[#B2F56F] pt-8 md:p-8 rounded-lg shadow-lg"
         style={{
           boxShadow: "10px 10px 0 20px #ffffff",
         }}
@@ -50,10 +51,17 @@ function KnowUsSection() {
         />
 
         {/* Text */}
-        <p className="text-center text-2xl md:text-4xl leading-normal font-semibold max-w-[360px] text-[#1A1A1A] relative z-30">
+        <p className="text-center text-2xl md:text-4xl leading-normal font-semibold max-w-[400px] md:max-w-[360px] text-[#1A1A1A] relative z-30 p-4">
           Fokus isn’t just a drink—it’s a lifestyle you live every day. Dive
           into our story and see what makes us different.
         </p>
+
+        <img
+          src={abhishekNischayImage}
+          alt="Abhishek and Nischay"
+          loading="lazy"
+          className="md:hidden block max-w-full h-auto relative z-30"
+        />
       </div>
     </section>
   );
