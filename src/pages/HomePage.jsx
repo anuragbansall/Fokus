@@ -1,12 +1,12 @@
 import React from "react";
-import HeroSection from "../components/HomePage/HeroSection";
-import FavoritesSection from "../components/HomePage/FavoritesSection";
-import CommercialSection from "../components/HomePage/CommercialSection";
-import WhyUsSection from "../components/HomePage/WhyUsSection";
-import KnowUsSection from "../components/HomePage/KnowUsSection";
-import CarouselSection from "../components/HomePage/CarouselSection";
-import LatestContentSection from "../components/HomePage/LatestContentSection";
-import ReviewsSection from "../components/HomePage/ReviewsSection";
+import HeroSection from "../components/home/HeroSection";
+import FavoritesSection from "../components/home/FavoritesSection";
+import CommercialSection from "../components/home/CommercialSection";
+import WhyUsSection from "../components/home/WhyUsSection";
+import KnowUsSection from "../components/home/KnowUsSection";
+import CarouselSection from "../components/home/CarouselSection";
+import LatestContentSection from "../components/home/LatestContentSection";
+import ReviewsSection from "../components/home/ReviewsSection";
 
 function HomePage() {
   return (
