@@ -16,6 +16,10 @@
   animation: marqueeRight 10s linear infinite;
 }
 
+.no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);

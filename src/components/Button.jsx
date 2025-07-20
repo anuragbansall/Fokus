@@ -14,7 +14,7 @@ function Button({
     <button
       onClick={onClick}
       className={`px-4 py-2 bg-black text-white transition-all duration-300 rounded
-        hover:scale-105 hover:bg-gray-900
+        hover:scale-101 hover:bg-gray-900
         disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
         ${className}
       `}

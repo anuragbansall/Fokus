@@ -3,6 +3,7 @@ import lemonBottle from "../../assets/kiwi-lemon-bottle.png";
 import strawberryBottle from "../../assets/strawberry-watermelon-bottle.png";
 import mangoBottle from "../../assets/mango-pineapple-bottle.png";
 import Button from "../Button";
+import { NavLink } from "react-router-dom";
 
 function ProductsSection() {
   const products = [
@@ -37,7 +38,8 @@ function ProductsSection() {
       <h2 className="text-4xl font-semibold text-center mb-12">Our Products</h2>
       <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3">
         {products.map((product) => (
-          <div
+          <NavLink
+            to={`/products/${product.id}`}
             key={product.id}
             className="relative rounded-lg p-6 flex flex-col justify-between group"
             style={{
@@ -56,7 +58,7 @@ function ProductsSection() {
             <div className="flex flex-col items-center gap-4">
               <Button>Add to Cart</Button>
             </div>
-          </div>
+          </NavLink>
         ))}
       </div>
     </section>
