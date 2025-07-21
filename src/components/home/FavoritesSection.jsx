@@ -34,7 +34,7 @@ function FavoritesSection() {
     },
   ];
 
-  const [selectedBottle, setSelectedBottle] = useState(favoriteBottles[0]);
+  const [selectedBottle, setSelectedBottle] = useState(null);
 
   const bottleRefs = useRef([]);
 
@@ -87,7 +87,7 @@ function FavoritesSection() {
             ref={(el) => (bottleRefs.current[idx] = el)}
             data-index={idx}
             className="
-              relative flex-shrink-0 group cursor-pointer w-[80vw] md:w-fit
+              relative flex-shrink-0 group cursor-pointer w-full md:w-fit
               snap-center md:snap-none
             "
             onMouseEnter={() =>
@@ -100,18 +100,18 @@ function FavoritesSection() {
             <img
               src={bottle.image}
               alt={bottle.name}
-              className="h-[25rem] object-cover relative z-2 group-hover:shake-animation mx-auto"
+              className="w-[25rem] max-w-full h-auto object-cover relative z-2 group-hover:shake-animation mx-auto"
             />
 
             <img
               src={bottle.ingredients[0]}
               alt=""
-              className="absolute top-20 left-22 md:left-34 w-[6rem] -translate-x-1/2 object-cover md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
+              className="absolute top-20 left-26 md:left-34 w-[6rem] -translate-x-1/2 object-cover md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
             />
             <img
               src={bottle.ingredients[1]}
               alt=""
-              className="absolute top-60 left-50 md:left-62 w-[6rem] -translate-x-1/2 object-cover z-3 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
+              className="absolute top-50 left-60 md:left-62 w-[6rem] -translate-x-1/2 object-cover md:z-3 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-animation"
             />
 
             <h3 className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xl font-semibold text-nowrap bg-white/80 p-2 rounded -rotate-10 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:scale-0 group-hover:scale-100 z-3">

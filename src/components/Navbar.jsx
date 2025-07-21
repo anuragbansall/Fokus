@@ -4,7 +4,7 @@ import { VscAccount } from "react-icons/vsc";
 import { IoMdCart } from "react-icons/io";
 import Button from "./Button";
 import LiquidGlass from "./LiquidGlass";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const navItems = [
@@ -30,13 +30,13 @@ function Navbar() {
     <header className="sticky top-0 z-[999] w-full bg-[#F5F5DC] shadow-md">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
         {/* Logo */}
-        <a href="/" aria-label="Homepage">
+        <Link to="/" aria-label="Homepage">
           <img
             src={logo}
             alt="Fokus Logo"
             className="h-10 md:h-12 object-contain"
           />
-        </a>
+        </Link>
 
         {/* Navigation Links */}
         <LiquidGlass className="hidden lg:flex px-6 py-2 rounded-full">
