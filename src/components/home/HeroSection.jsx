@@ -1,6 +1,8 @@
 import React from "react";
-import heroBgDesktop from "../../assets/hero-bg-desktop.mp4";
-import heroBgMobile from "../../assets/hero-bg-mobile.mp4";
+import heroBgDesktopVideo from "../../assets/hero-bg-desktop.mp4";
+import heroBgDesktopImage from "../../assets/hero-bg-desktop.jpg";
+import heroBgMobileVideo from "../../assets/hero-bg-mobile.mp4";
+import heroBgMobileImage from "../../assets/hero-bg-mobile.jpg";
 import Button from "../Button";
 import watermelon from "../../assets/watermelon.png";
 import lemon from "../../assets/lemon.png";
@@ -27,22 +29,26 @@ function HeroSection() {
       {/* Background Video */}
       <div className="w-full object-cover object-top max-h-screen">
         <video
-          src={heroBgDesktop}
+          src={heroBgDesktopVideo}
           autoPlay
           loop
           muted
           playsInline
           className="w-full h-full object-cover object-top hidden md:block aspect-[16/9] max-h-full"
           aria-hidden="true"
+          preload="auto"
+          poster={heroBgDesktopImage}
         />
         <video
-          src={heroBgMobile}
+          src={heroBgMobileVideo}
           autoPlay
           loop
           muted
           playsInline
           className="w-full h-full object-cover object-top block md:hidden aspect-[9/16]"
           aria-hidden="true"
+          preload="auto"
+          poster={heroBgMobileImage}
         />
       </div>
 
