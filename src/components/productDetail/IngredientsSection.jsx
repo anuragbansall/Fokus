@@ -17,7 +17,7 @@ function IngredientsSection({ INGREDIENTS = [], INGREDIENTS_IMAGE = {}, FEATURES
           />
         </div>
 
-        <div className="w-full max-w-xl">
+        <div className="w-full max-w-xl p-6">
           <h2 className="text-4xl font-bold mb-3">Ingredients</h2>
           <p className="font-semibold text-lg mb-6">
             Crafted with the Finest Natural Ingredients for Refreshing Taste

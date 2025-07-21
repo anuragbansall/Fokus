@@ -6,8 +6,8 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
     <section className="px-6 py-12">
       <div className="flex flex-col md:flex-row md:space-x-8 justify-between">
         {/* Left side thumbnails and main image */}
-        <div className="flex space-x-4 md:space-x-6 max-h-[29rem]">
-          <div className="flex flex-col space-y-4 overflow-y-auto no-scrollbar p-2">
+        <div className="flex flex-col-reverse md:flex-row gap-6 md:max-h-[29rem]">
+          <div className="w-full md:w-fit flex flex-row md:flex-col gap-4 overflow-y-auto no-scrollbar p-2">
             {THUMBNAIL_IDS.map((id, idx) => (
               <button
                 key={id}
@@ -26,7 +26,7 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
 
           <div
             aria-label="Main image"
-            className="border rounded-md overflow-hidden w-[28rem] h-full flex-shrink-0"
+            className="border rounded-md overflow-hidden w-[28rem] max-w-full h-full flex-shrink-0"
             style={{ boxShadow: "1.5px 1.5px 0 2.5px rgba(0,0,0,0.8)" }}
           >
             <img
@@ -38,7 +38,7 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
         </div>
 
         {/* Right side product details */}
-        <div className="mx-auto mt-6 md:mt-0 px-8 flex flex-col ">
+        <div className="mx-auto mt-6 md:mt-0 md:px-8 flex flex-col ">
           <h1 className="text-2xl md:text-4xl font-bold mb-2">
             {PRODUCT.name}
           </h1>

@@ -1,7 +1,7 @@
 import React from "react";
 import ProductSection from "../components/productDetail/ProductSection";
 import IngredientsSection from "../components/productDetail/IngredientsSection";
-import SplashSection from "./SplashSection";
+import SplashSection from "../components/productDetail/SplashSection";
 
 // Extracted data
 const THUMBNAIL_IDS = [
