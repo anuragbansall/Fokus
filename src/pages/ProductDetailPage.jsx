@@ -35,22 +35,22 @@ const PRODUCT = {
 
 const INGREDIENTS = [
   {
-    name: "Coconut Water",
+    title: "Coconut Water",
     description:
       "Natural hydration source, rich in electrolytes, supports hydration and recovery.",
   },
   {
-    name: "Vitamins B6 & B12",
+    title: "Vitamins B6 & B12",
     description:
       "Essential for energy metabolism, supports brain function and reduces fatigue.",
   },
   {
-    name: "Natural Flavors",
+    title: "Natural Flavors",
     description:
       "Derived from real fruits, providing a refreshing taste without artificial additives.",
   },
   {
-    name: "Electrolytes",
+    title: "Electrolytes",
     description:
       "Helps maintain fluid balance, supports muscle function and prevents dehydration.",
   },
