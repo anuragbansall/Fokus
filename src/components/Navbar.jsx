@@ -9,7 +9,7 @@ import { Link, NavLink } from "react-router-dom";
 function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Know Fokus", href: "/about" },
+    { name: "Know Fokus", href: "/about-us" },
     { name: "Products", href: "/products" },
   ];
 

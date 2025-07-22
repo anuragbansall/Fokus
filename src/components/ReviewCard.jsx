@@ -1,12 +1,10 @@
 import React from "react";
 
-function ReviewCard({ name, image, reviewText }) {
+function ReviewCard({ name, image, reviewText, className, ...props }) {
   return (
     <figure
-      className="bg-[#ffffffcc] rounded-lg overflow-hidden w-[22rem]"
-      style={{
-        boxShadow: "2.5px 2.5px 0 5px #ffffff",
-      }}
+      className={`bg-[#ffffffcc] rounded-lg overflow-hidden w-[22rem] ${className}`}
+      {...props}
     >
       <div className="bg-zinc-100 w-full aspect-[1/1]">
         <img

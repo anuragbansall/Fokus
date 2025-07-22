@@ -48,6 +48,9 @@ function ReviewsSection() {
               name={review.name}
               image={review.image}
               reviewText={review.reviewText}
+              style={{
+                boxShadow: "2.5px 2.5px 0 5px #ffffff",
+              }}
             />
           ))}
         </MediaCarousel>
