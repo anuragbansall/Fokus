@@ -26,7 +26,7 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
 
           <div
             aria-label="Main image"
-            className="border rounded-md overflow-hidden w-[28rem] max-w-full h-full flex-shrink-0"
+            className="border rounded-md overflow-hidden md:w-[28rem] max-w-full h-full flex-shrink-0"
             style={{ boxShadow: "1.5px 1.5px 0 2.5px rgba(0,0,0,0.8)" }}
           >
             <img
