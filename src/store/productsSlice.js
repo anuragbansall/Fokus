@@ -14,7 +14,17 @@ import strawberryWatermelonThumbnail2 from "../assets/strawberry-watermelon-thum
 import strawberryWatermelonThumbnail3 from "../assets/strawberry-watermelon-thumbnail-3.jpg";
 import strawberryWatermelonThumbnail4 from "../assets/strawberry-watermelon-thumbnail-4.jpg";
 import threeBottlesImage from "../assets/three-bottles.png";
-import strawberryWatermelonSplashImage from "../assets/strawberry-watermelon-splash-image.jpg";
+import strawberryWatermelonSplashImage from "../assets/strawberry-watermelon-splash.jpg";
+import kiwiLemonThumbnail1 from "../assets/kiwi-lemon-thumbnail-1.jpg";
+import kiwiLemonThumbnail2 from "../assets/kiwi-lemon-thumbnail-2.jpg";
+import kiwiLemonThumbnail3 from "../assets/kiwi-lemon-thumbnail-3.jpg";
+import kiwiLemonThumbnail4 from "../assets/kiwi-lemon-thumbnail-4.jpg";
+import kiwiLemonSplashImage from "../assets/kiwi-lemon-splash.jpg";
+import mangoPineappleThumbnail1 from "../assets/mango-pineapple-thumbnail-1.jpg";
+import mangoPineappleThumbnail2 from "../assets/mango-pineapple-thumbnail-2.jpg";
+import mangoPineappleThumbnail3 from "../assets/mango-pineapple-thumbnail-3.jpg";
+import mangoPineappleThumbnail4 from "../assets/mango-pineapple-thumbnail-4.jpg";
+import mangoPineappleSplashImage from "../assets/mango-pineapple-splash.jpg";
 
 const initialState = {
   products: [
@@ -114,19 +124,19 @@ const initialState = {
     },
     {
       id: 2,
-      image: strawberryWatermelonBottle,
-      name: "Fokus Hydration - Strawberry Watermelon",
-      alias: "Strawberry Watermelon",
-      description: "Refreshing strawberries & juicy watermelon.",
-      ingredients: [strawberry, watermelon],
-      backgroundColor: "#FF6262",
+      image: kiwiLemonBottle,
+      name: "Fokus Hydration - Kiwi Lemon",
+      alias: "Kiwi Lemon",
+      description: "Zesty kiwi & tangy lemon.",
+      ingredients: [kiwi, lemon],
+      backgroundColor: "#95DA4A",
       price: "Rs.150.00",
       tag: "Best Seller",
       thumbnails: [
-        strawberryWatermelonThumbnail1,
-        strawberryWatermelonThumbnail2,
-        strawberryWatermelonThumbnail3,
-        strawberryWatermelonThumbnail4,
+        kiwiLemonThumbnail1,
+        kiwiLemonThumbnail2,
+        kiwiLemonThumbnail3,
+        kiwiLemonThumbnail4,
       ],
       shippingInfo: [
         "Free Shipping on all orders for 24 Hours",
@@ -202,25 +212,25 @@ const initialState = {
         { src: "feature2", text: "No Added Sugar" },
       ],
       splashImage: {
-        src: strawberryWatermelonSplashImage,
+        src: kiwiLemonSplashImage,
         alt: "Splash Image",
       },
     },
     {
       id: 3,
-      image: strawberryWatermelonBottle,
-      name: "Fokus Hydration - Strawberry Watermelon",
-      alias: "Strawberry Watermelon",
-      description: "Refreshing strawberries & juicy watermelon.",
-      ingredients: [strawberry, watermelon],
-      backgroundColor: "#FF6262",
+      image: mangoPineappleBottle,
+      name: "Fokus Hydration - Mango Pineapple",
+      alias: "Mango Pineapple",
+      description: "Refreshing mango & juicy pineapple.",
+      ingredients: [mango, pineapple],
+      backgroundColor: "#FFE061",
       price: "Rs.150.00",
       tag: "Best Seller",
       thumbnails: [
-        strawberryWatermelonThumbnail1,
-        strawberryWatermelonThumbnail2,
-        strawberryWatermelonThumbnail3,
-        strawberryWatermelonThumbnail4,
+        mangoPineappleThumbnail1,
+        mangoPineappleThumbnail2,
+        mangoPineappleThumbnail3,
+        mangoPineappleThumbnail4,
       ],
       shippingInfo: [
         "Free Shipping on all orders for 24 Hours",
@@ -296,7 +306,7 @@ const initialState = {
         { src: "feature2", text: "No Added Sugar" },
       ],
       splashImage: {
-        src: strawberryWatermelonSplashImage,
+        src: mangoPineappleSplashImage,
         alt: "Splash Image",
       },
     },

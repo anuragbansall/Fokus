@@ -7,7 +7,7 @@ function ProductSection({ THUMBNAIL, PRODUCT, backgroundColor }) {
   return (
     <section
       className="px-6 py-12"
-      style={{ backgroundColor: `${backgroundColor}11` }}
+      style={{ backgroundColor: `${backgroundColor}22` }}
     >
       <div className="flex flex-col md:flex-row md:space-x-8 justify-between">
         {/* Left side thumbnails and main image */}
