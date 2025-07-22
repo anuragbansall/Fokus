@@ -1,4 +1,7 @@
 import React from "react";
+import strawberryWatermelonBottleHalfImage from "../../assets/strawberry-watermelon-bottle-half.webp";
+import mangoPineappleBottleHalfImage from "../../assets/mango-pineapple-bottle-half.webp";
+import kiwiLemonBottleHalfImage from "../../assets/kiwi-lemon-bottle-half.webp";
 
 const sectionData = [
   {
@@ -21,24 +24,21 @@ const sectionData = [
       },
     ],
     bgColor: "#F96868",
-    image:
-      "https://fokus.shop/cdn/shop/files/image_13.png?v=1737723623&width=752",
+    image: strawberryWatermelonBottleHalfImage,
   },
   {
     title: "COOL LOOK, COOLER CONSCIENCE",
     description:
       "Our branding isn’t just easy on the eyes—it’s designed to make you feel great too. With vibrant colors, bold designs, and all the info you need, every bottle of Fokus stands out and tells a story. And about that plastic bottle? No worries—it's 100% recyclable. So, you can sip guilt-free, knowing we’re doing our part to keep the planet as fresh as you feel!",
     bgColor: "#F9E36D",
-    image:
-      "https://fokus.shop/cdn/shop/files/image_14.png?v=1737723655&width=752",
+    image: mangoPineappleBottleHalfImage,
   },
   {
     title: "THE #GET FOKUS REVOLUTION",
     description:
       "With Abhishek and Nischay Malhan leading the charge, we’re not just creating a brand—we’re creating a movement. #GetFokus isn’t just a hashtag; it’s a tribe. So, join in, talk, share, form Fokus groups, and get ready to take over the world—one focused moment at a time.",
     bgColor: "#9EDB6E",
-    image:
-      "https://fokus.shop/cdn/shop/files/image_12.png?v=1737723587&width=752",
+    image: kiwiLemonBottleHalfImage,
   },
 ];
 

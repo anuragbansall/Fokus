@@ -1,32 +1,32 @@
 import React from "react";
 import ReviewCard from ".././ReviewCard";
+import ankitMadanImage from "../../assets/ankit-madan.jpg";
+import mayankMishraImage from "../../assets/mayank-mishra.png";
+import amanMadaanImage from "../../assets/aman-madaan.jpg";
+import nischayMalhanImage from "../../assets/nischay-malhan.jpg";
+import abhishekMalhanImage from "../../assets/abhishek-malhan.jpg";
 
 function FoundersSection() {
   const founders = [
     {
       name: "Ankit Madan",
-      image:
-        "https://fokus-energy.vercel.app/assets/ashish-chanchlani-Cx55wF4P.jpg",
+      image: ankitMadanImage,
     },
     {
       name: "Mayank Mishra",
-      image:
-        "https://fokus-energy.vercel.app/assets/ashish-chanchlani-Cx55wF4P.jpg",
+      image: mayankMishraImage,
     },
     {
       name: "Aman Madaan",
-      image:
-        "https://fokus-energy.vercel.app/assets/ashish-chanchlani-Cx55wF4P.jpg",
+      image: amanMadaanImage,
     },
     {
       name: "Nischay Malhan",
-      image:
-        "https://fokus-energy.vercel.app/assets/ashish-chanchlani-Cx55wF4P.jpg",
+      image: nischayMalhanImage,
     },
     {
       name: "Abhishek Malhan",
-      image:
-        "https://fokus-energy.vercel.app/assets/ashish-chanchlani-Cx55wF4P.jpg",
+      image: abhishekMalhanImage,
     },
   ];
 
