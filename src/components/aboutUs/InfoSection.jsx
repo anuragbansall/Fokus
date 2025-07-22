@@ -52,7 +52,7 @@ const InfoSection = () => {
           style={{ backgroundColor: section.bgColor }}
         >
           {/* Left Text */}
-          <div className="w-[60%] space-y-6 py-14 pl-18">
+          <div className="md:w-[60%] space-y-6 py-14 px-6 md:px-0 md:pl-18">
             <h2
               className="inline-block bg-[#F4F3E0] text-black font-bold text-xl sm:text-2xl px-8 py-3 shadow-md rounded-tr-xl rounded-br-xl"
               style={{
@@ -87,7 +87,7 @@ const InfoSection = () => {
           </div>
 
           {/* Right Image */}
-          <div className="flex justify-center items-center pr-18">
+          <div className="hidden md:flex justify-center items-center pr-18">
             <img
               src={section.image}
               alt="Fokus Bottle"
