@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import threeBottlesImage from "../../assets/three-bottles.png";
 import { FaPlus } from "react-icons/fa";
 import Dropdown from "../Dropdown";
 
@@ -7,17 +6,21 @@ function IngredientsSection({
   INGREDIENTS = [],
   INGREDIENTS_IMAGE = {},
   FEATURES,
+  backgroundColor,
 }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section className="relative bg-[#fcd94f] mt-16 pt-12 pb-20 overflow-hidden">
+    <section
+      className="relative pt-12 pb-20 overflow-hidden"
+      style={{ backgroundColor: `${backgroundColor}` }}
+    >
       <div className="flex flex-col lg:flex-row items-center justify-around space-y-8 lg:space-y-0 lg:space-x-12">
         <div className="flex justify-center items-center">
           <img
-            src={threeBottlesImage}
+            src={INGREDIENTS_IMAGE.src}
             alt={INGREDIENTS_IMAGE.alt || "Ingredient bottles"}
-            className="object-contain w-70"
+            className="object-contain w-full"
           />
         </div>
 

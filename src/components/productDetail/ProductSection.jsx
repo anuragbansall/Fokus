@@ -1,22 +1,28 @@
 import React from "react";
 import Button from "../Button";
 
-function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
+function ProductSection({ THUMBNAIL, PRODUCT, backgroundColor }) {
+  const [mainImage, setMainImage] = React.useState(THUMBNAIL[0]);
+
   return (
-    <section className="px-6 py-12">
+    <section
+      className="px-6 py-12"
+      style={{ backgroundColor: `${backgroundColor}11` }}
+    >
       <div className="flex flex-col md:flex-row md:space-x-8 justify-between">
         {/* Left side thumbnails and main image */}
         <div className="flex flex-col-reverse md:flex-row gap-6 md:max-h-[29rem]">
           <div className="w-full md:w-fit flex flex-row md:flex-col gap-4 overflow-y-auto no-scrollbar p-2">
-            {THUMBNAIL_IDS.map((id, idx) => (
+            {THUMBNAIL.map((thumbnail, idx) => (
               <button
-                key={id}
+                key={idx}
                 aria-label="Thumbnail image"
                 className={`border rounded-md overflow-hidden w-32 h-32 flex-shrink-0 cursor-pointer`}
                 style={{ boxShadow: "1px 1px 0 2px rgba(0,0,0,0.8)" }}
+                onClick={() => setMainImage(thumbnail)}
               >
                 <img
-                  src={`https://storage.googleapis.com/a1aa/image/${id}.jpg`}
+                  src={thumbnail}
                   alt="Thumbnail"
                   className="object-cover w-full h-full"
                 />
@@ -26,11 +32,11 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
 
           <div
             aria-label="Main image"
-            className="border rounded-md overflow-hidden md:w-[28rem] max-w-full h-full flex-shrink-0"
+            className="border rounded-md overflow-hidden w-[28rem] max-w-full h-full flex-shrink-0"
             style={{ boxShadow: "1.5px 1.5px 0 2.5px rgba(0,0,0,0.8)" }}
           >
             <img
-              src={`https://storage.googleapis.com/a1aa/image/${MAIN_IMAGE_ID}.jpg`}
+              src={mainImage}
               alt="Main Product"
               className="object-cover w-full h-full"
             />
@@ -38,7 +44,7 @@ function ProductSection({ THUMBNAIL_IDS, MAIN_IMAGE_ID, PRODUCT }) {
         </div>
 
         {/* Right side product details */}
-        <div className="mx-auto mt-6 md:mt-0 md:px-8 flex flex-col ">
+        <div className="w-full mx-auto mt-6 md:mt-0 md:px-8 flex flex-col ">
           <h1 className="text-2xl md:text-4xl font-bold mb-2">
             {PRODUCT.name}
           </h1>

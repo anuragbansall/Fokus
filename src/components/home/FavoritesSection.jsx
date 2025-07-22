@@ -1,38 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import strawberryWatermelonBottle from "../../assets/strawberry-watermelon-bottle.png";
-import kiwiLemonBottle from "../../assets/kiwi-lemon-bottle.png";
-import mangoPineappleBottle from "../../assets/mango-pineapple-bottle.png";
-import lemon from "../../assets/lemon.png";
-import kiwi from "../../assets/kiwi.png";
-import mango from "../../assets/mango.png";
-import pineapple from "../../assets/pineapple.png";
-import strawberry from "../../assets/strawberry.png";
-import watermelon from "../../assets/watermelon.png";
+import { useSelector } from "react-redux";
 
 function FavoritesSection() {
-  const favoriteBottles = [
-    {
-      id: 1,
-      image: strawberryWatermelonBottle,
-      name: "Strawberry Watermelon",
-      ingredients: [strawberry, watermelon],
-      backgroundColor: "#FF6262",
-    },
-    {
-      id: 2,
-      image: kiwiLemonBottle,
-      name: "Kiwi Lemon",
-      ingredients: [kiwi, lemon],
-      backgroundColor: "#94DA49",
-    },
-    {
-      id: 3,
-      image: mangoPineappleBottle,
-      name: "Mango Pineapple",
-      ingredients: [mango, pineapple],
-      backgroundColor: "#FFE060",
-    },
-  ];
+  const favoriteBottles = useSelector((state) => state.products.products);
 
   const [selectedBottle, setSelectedBottle] = useState(null);
 
@@ -115,7 +85,7 @@ function FavoritesSection() {
             />
 
             <h3 className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xl font-semibold text-nowrap bg-white/80 p-2 rounded -rotate-10 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:scale-0 group-hover:scale-100 z-3">
-              {bottle.name}
+              {bottle.alias}
             </h3>
           </div>
         ))}
