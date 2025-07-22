@@ -16,12 +16,12 @@ function HeroSection() {
   ];
 
   return (
-    <section className="py-18 space-y-8 text-center">
-      <img src={knowUsImage} alt="Know Us" className="w-64 h-auto mx-auto" />
+    <section className="py-18 px-6 space-y-8 text-center">
+      <img src={knowUsImage} alt="Know Us" className="max-w-full w-64 h-auto mx-auto" />
 
       {infoText.map((info, index) => (
         <p
-          className="max-w-4xl text-center mx-auto text-2xl text-[#1A1A1A] font-normal"
+          className="max-w-4xl text-center mx-auto text-xl sm:text-2xl text-[#1A1A1A] font-normal"
           key={index}
         >
           <span className="font-bold">{info.title}</span> {info.content}
