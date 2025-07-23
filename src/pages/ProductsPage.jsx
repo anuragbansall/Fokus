@@ -8,28 +8,42 @@ import ProductsSection from "../components/products/ProductsSection";
 import TestimonialsSection from "../components/products/TestimonialsSection";
 import FAQSection from "../components/products/FAQSection";
 import CTASection from "../components/products/CTASection";
+import PageTransition from "../components/PageTransition";
+import FadeInWhenVisible from "../components/FadeInWhenVisible";
 
 function ProductsPage() {
   return (
-    <main>
-      {/* Hero Section */}
-      <HeroSection />
+    <PageTransition>
+      <main>
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Benefits Section */}
-      <BenifitsSection />
+        {/* Benefits Section */}
+        <FadeInWhenVisible delay={0.1}>
+          <BenifitsSection />
+        </FadeInWhenVisible>
 
-      {/* Product Grid */}
-      <ProductsSection />
+        {/* Product Grid */}
+        <FadeInWhenVisible delay={0.2}>
+          <ProductsSection />
+        </FadeInWhenVisible>
 
-      {/* Testimonials */}
-      <TestimonialsSection />
+        {/* Testimonials */}
+        <FadeInWhenVisible delay={0.1}>
+          <TestimonialsSection />
+        </FadeInWhenVisible>
 
-      {/* FAQ */}
-      <FAQSection />
+        {/* FAQ */}
+        <FadeInWhenVisible delay={0.2}>
+          <FAQSection />
+        </FadeInWhenVisible>
 
-      {/* CTA */}
-      <CTASection />
-    </main>
+        {/* CTA */}
+        <FadeInWhenVisible delay={0.1}>
+          <CTASection />
+        </FadeInWhenVisible>
+      </main>
+    </PageTransition>
   );
 }
 
