@@ -1,8 +1,49 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, decreaseQuantity } from "../../store/cartSlice";
+import { useToast } from "../../hooks/useToast";
 import Button from "../Button";
 
 function ProductSection({ THUMBNAIL, PRODUCT, backgroundColor }) {
   const [mainImage, setMainImage] = React.useState(THUMBNAIL[0]);
+  const dispatch = useDispatch();
+  const { addToast } = useToast();
+  const cartItems = useSelector((state) => state.cart.items);
+
+  // Get current product data from the products slice
+  const products = useSelector((state) => state.products.products);
+  const currentProduct = products.find(
+    (product) => product.name === PRODUCT.name
+  );
+
+  // Find the current item in cart to get its quantity
+  const cartItem = cartItems.find((item) => item.id === currentProduct?.id);
+  const currentQuantity = cartItem ? cartItem.quantity : 0;
+
+  const handleAddToCart = () => {
+    if (currentProduct) {
+      dispatch(
+        addToCart({
+          id: currentProduct.id,
+          name: currentProduct.name,
+          image: currentProduct.image,
+          price: currentProduct.price,
+          backgroundColor: backgroundColor,
+          alias: currentProduct.alias,
+        })
+      );
+      addToast(`${currentProduct.alias} added to cart!`, "success");
+    }
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (currentProduct && currentQuantity > 0) {
+      dispatch(decreaseQuantity(currentProduct.id));
+      if (currentQuantity === 1) {
+        addToast(`${currentProduct.alias} removed from cart`, "success");
+      }
+    }
+  };
 
   return (
     <section
@@ -58,20 +99,26 @@ function ProductSection({ THUMBNAIL, PRODUCT, backgroundColor }) {
           <div className="flex items-center space-x-2 my-6">
             <button
               aria-label="Decrease quantity"
-              className="border border-black rounded-md w-7 h-7 flex items-center justify-center text-black font-bold text-lg select-none"
+              className="border border-black rounded-md w-7 h-7 flex items-center justify-center text-black font-bold text-lg select-none hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={handleDecreaseQuantity}
+              disabled={currentQuantity === 0}
             >
               −
             </button>
-            <span className="text-sm select-none">1</span>
+            <span className="text-sm select-none min-w-[2rem] text-center">
+              {currentQuantity}
+            </span>
             <button
               aria-label="Increase quantity"
-              className="border border-black rounded-md w-7 h-7 flex items-center justify-center text-black font-bold text-lg select-none"
+              className="border border-black rounded-md w-7 h-7 flex items-center justify-center text-black font-bold text-lg select-none hover:bg-gray-100 transition-colors"
+              onClick={handleAddToCart}
             >
               +
             </button>
             <Button
               aria-label="Add to Cart"
               className="bg-black text-white text-sm font-semibold rounded-md flex-1 py-2 text-center"
+              onClick={handleAddToCart}
             >
               Add to Cart
             </Button>

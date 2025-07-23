@@ -1,13 +1,32 @@
 import React from "react";
-import lemonBottle from "../../assets/kiwi-lemon-bottle.png";
-import strawberryBottle from "../../assets/strawberry-watermelon-bottle.png";
-import mangoBottle from "../../assets/mango-pineapple-bottle.png";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
+import { useToast } from "../../hooks/useToast";
 import Button from "../Button";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function ProductsSection() {
   const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const { addToast } = useToast();
+
+  const handleAddToCart = (e, product) => {
+    e.preventDefault(); // Prevent navigation when clicking add to cart
+    e.stopPropagation();
+
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        backgroundColor: product.backgroundColor,
+        alias: product.alias,
+      })
+    );
+
+    addToast(`${product.alias} added to cart!`, "success");
+  };
 
   return (
     <section className="p-8 my-12">
@@ -32,7 +51,12 @@ function ProductsSection() {
               {product.alias}
             </h3>
             <div className="flex flex-col items-center gap-4">
-              <Button>Add to Cart</Button>
+              <Button
+                onClick={(e) => handleAddToCart(e, product)}
+                className="hover:bg-gray-800 transition-colors"
+              >
+                Add to Cart
+              </Button>
             </div>
           </NavLink>
         ))}

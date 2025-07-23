@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import heroBgDesktopVideo from "../../assets/hero-bg-desktop.mp4";
 import heroBgDesktopImage from "../../assets/hero-bg-desktop.jpg";
 import heroBgMobileVideo from "../../assets/hero-bg-mobile.mp4";
@@ -68,12 +69,14 @@ function HeroSection() {
           ))}
 
           {/* Buy Now Button */}
-          <Button
-            className="w-40 sm:w-48 rounded-full text-base sm:text-lg relative z-10"
-            aria-label="Buy Fokus Energy Drink Now"
-          >
-            Buy Now
-          </Button>
+          <Link to="/products">
+            <Button
+              className="w-40 sm:w-48 rounded-full text-base sm:text-lg relative z-10"
+              aria-label="Buy Fokus Energy Drink Now"
+            >
+              Buy Now
+            </Button>
+          </Link>
         </LiquidGlass>
       </div>
     </section>

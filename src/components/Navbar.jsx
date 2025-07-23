@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import logo from "../assets/logo.webp";
 import { VscAccount } from "react-icons/vsc";
 import { IoMdCart } from "react-icons/io";
@@ -9,6 +10,17 @@ import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartAnimating, setIsCartAnimating] = useState(false);
+  const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
+
+  // Animate cart icon when quantity changes
+  useEffect(() => {
+    if (cartTotalQuantity > 0) {
+      setIsCartAnimating(true);
+      const timer = setTimeout(() => setIsCartAnimating(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [cartTotalQuantity]);
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -24,7 +36,16 @@ function Navbar() {
     },
     {
       name: "Cart",
-      icon: <IoMdCart />,
+      icon: (
+        <div className={`relative ${isCartAnimating ? "animate-bounce" : ""}`}>
+          <IoMdCart />
+          {cartTotalQuantity > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+              {cartTotalQuantity}
+            </span>
+          )}
+        </div>
+      ),
       href: "/cart",
     },
   ];
@@ -86,7 +107,11 @@ function Navbar() {
               {item.icon}
             </NavLink>
           ))}
-          <Button className="rounded-full text-sm md:text-base">Buy Now</Button>
+          <Link to="/products">
+            <Button className="rounded-full text-sm md:text-base">
+              Buy Now
+            </Button>
+          </Link>
         </LiquidGlass>
       </nav>
 
@@ -133,7 +158,9 @@ function Navbar() {
           ))}
         </div>
         <div className="p-4">
-          <Button className="w-full rounded-full text-base">Buy Now</Button>
+          <Link to="/products" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button className="w-full rounded-full text-base">Buy Now</Button>
+          </Link>
         </div>
       </div>
 

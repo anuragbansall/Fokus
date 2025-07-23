@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LiquidGlass from "../LiquidGlass";
 import Button from "../Button";
 import abhishekLeftImage from "../../assets/abhishek-left.png";
@@ -29,12 +30,14 @@ function CTASection() {
 
         {/* Buy Now Button */}
         <LiquidGlass className="mx-auto w-full sm:w-fit px-8 sm:px-16 py-2 rounded-full group">
-          <Button
-            className="w-full sm:w-48 rounded-full text-base sm:text-lg relative z-10"
-            aria-label="Buy Fokus Energy Drink Now"
-          >
-            Buy Now
-          </Button>
+          <Link to="/products">
+            <Button
+              className="w-full sm:w-48 rounded-full text-base sm:text-lg relative z-10"
+              aria-label="Buy Fokus Energy Drink Now"
+            >
+              Buy Now
+            </Button>
+          </Link>
         </LiquidGlass>
       </div>
 
