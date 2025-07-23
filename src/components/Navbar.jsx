@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../store/authSlice";
+import { clearCart } from "../store/cartSlice";
+import { useToast } from "../hooks/useToast";
 import logo from "../assets/logo.webp";
 import { VscAccount } from "react-icons/vsc";
 import { IoMdCart } from "react-icons/io";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiUser, FiLogOut } from "react-icons/fi";
 import Button from "./Button";
 import LiquidGlass from "./LiquidGlass";
 import { Link, NavLink } from "react-router-dom";
@@ -11,7 +14,12 @@ import { Link, NavLink } from "react-router-dom";
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartAnimating, setIsCartAnimating] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const dispatch = useDispatch();
+  const { addToast } = useToast();
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   // Animate cart icon when quantity changes
   useEffect(() => {
@@ -22,6 +30,13 @@ function Navbar() {
     }
   }, [cartTotalQuantity]);
 
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(clearCart());
+    addToast("Logged out successfully!", "success");
+    setShowUserMenu(false);
+  };
+
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Know Fokus", href: "/about-us" },
@@ -31,8 +46,40 @@ function Navbar() {
   const navIcons = [
     {
       name: "Account",
-      icon: <VscAccount />,
-      href: "/account",
+      icon: isAuthenticated ? (
+        <div className="relative">
+          <button
+            onClick={() => setShowUserMenu(!showUserMenu)}
+            className="flex items-center gap-2 p-2 rounded-full hover:bg-gray-100 transition-colors"
+          >
+            <FiUser />
+            <span className="hidden md:inline text-sm">{user?.name}</span>
+          </button>
+
+          {showUserMenu && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
+              <Link
+                to="/account"
+                onClick={() => setShowUserMenu(false)}
+                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-gray-800"
+              >
+                <FiUser />
+                My Account
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-gray-800"
+              >
+                <FiLogOut />
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <VscAccount />
+      ),
+      href: isAuthenticated ? "/account" : "/login",
     },
     {
       name: "Cart",
@@ -98,14 +145,19 @@ function Navbar() {
         {/* Icons + CTA (Desktop) */}
         <LiquidGlass className="hidden lg:flex items-center space-x-4 px-4 py-2 rounded-full">
           {navIcons.map((item, index) => (
-            <NavLink
-              key={index}
-              to={item.href}
-              aria-label={item.name}
-              className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
-            >
-              {item.icon}
-            </NavLink>
+            <div key={index}>
+              {item.name === "Account" && isAuthenticated ? (
+                item.icon
+              ) : (
+                <NavLink
+                  to={item.href}
+                  aria-label={item.name}
+                  className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
+                >
+                  {item.icon}
+                </NavLink>
+              )}
+            </div>
           ))}
           <Link to="/products">
             <Button className="rounded-full text-sm md:text-base">
@@ -146,15 +198,22 @@ function Navbar() {
         </ul>
         <div className="flex items-center space-x-4 p-4">
           {navIcons.map((item, index) => (
-            <NavLink
-              key={index}
-              to={item.href}
-              aria-label={item.name}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
-            >
-              {item.icon}
-            </NavLink>
+            <div key={index}>
+              {item.name === "Account" && isAuthenticated ? (
+                <div className="text-gray-800 text-2xl hover:text-black transition-colors duration-200">
+                  {item.icon}
+                </div>
+              ) : (
+                <NavLink
+                  to={item.href}
+                  aria-label={item.name}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-800 text-2xl hover:text-black transition-colors duration-200"
+                >
+                  {item.icon}
+                </NavLink>
+              )}
+            </div>
           ))}
         </div>
         <div className="p-4">
