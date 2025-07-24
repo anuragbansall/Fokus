@@ -120,7 +120,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hey there! 👋 I'm your **Fokus assistant**! \n\nAsk me anything about our amazing energy drinks:\n- 🍓 **Flavors & ingredients**\n- 📦 **Ordering & shipping**\n- ⚡ **Benefits & nutrition**\n- 🤔 **General questions**\n\nReady to **#GetFokus**? 🚀",
+      text: "Hello! 👋 I'm your **Fokus assistant**.\n\nI can help you with:\n- **Product information** & ingredients\n- **Ordering** & shipping details\n- **Nutritional benefits** & usage\n- **General questions** about Fokus\n\nHow can I help you today?",
       isBot: true,
       timestamp: new Date(),
     },
@@ -222,24 +222,23 @@ Please provide a helpful, friendly response focused on Fokus products and servic
       {/* Chat Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 bg-white text-[#94DA49] p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#94DA49] ${
+        className={`fixed bottom-6 right-6 z-50 bg-[#94DA49] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
           isOpen ? "hidden" : "block"
         }`}
         whileHover={{
-          scale: 1.1,
-          backgroundColor: "#94DA49",
-          color: "#ffffff",
+          scale: 1.05,
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         }}
-        whileTap={{ scale: 0.9 }}
+        whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2 }}
       >
         <FaRobot size={24} />
         <motion.div
-          className="absolute -top-2 -right-2 bg-[#FF6262] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-lg"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ repeat: Infinity, duration: 3 }}
         >
           !
         </motion.div>
@@ -249,36 +248,35 @@ Please provide a helpful, friendly response focused on Fokus products and servic
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-            style={{
-              boxShadow:
-                "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(148, 218, 73, 0.1)",
-            }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-6 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden backdrop-blur-sm"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#FF6262] to-[#94DA49] text-white p-4 flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <FaRobot size={20} />
+            <div className="bg-white border-b border-gray-200 text-gray-800 p-4 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="bg-[#94DA49] p-2 rounded-full">
+                  <FaRobot size={18} className="text-white" />
+                </div>
                 <div>
-                  <h3 className="font-bold">Fokus Assistant</h3>
-                  <p className="text-xs opacity-90">
+                  <h3 className="font-semibold text-gray-900">Fokus Assistant</h3>
+                  <p className="text-xs text-gray-500">
                     Here to help you #GetFokus
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:text-gray-200 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100 cursor-pointer"
               >
-                <FaTimes size={18} />
+                <FaTimes size={16} />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gradient-to-b from-gray-50 to-white">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -289,20 +287,21 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                   }`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg ${
+                    className={`max-w-[85%] p-3 rounded-2xl transition-all duration-200 hover:shadow-md cursor-default ${
                       message.isBot
-                        ? "bg-white text-gray-800 border border-gray-200"
-                        : "bg-gradient-to-r from-[#FF6262] to-[#94DA49] text-white"
+                        ? "bg-white text-gray-800 border border-gray-200 shadow-sm hover:border-gray-300"
+                        : "bg-[#94DA49] text-white shadow-sm hover:bg-[#7bc143]"
                     }`}
                   >
                     <div className="flex items-start space-x-2">
                       {message.isBot ? (
-                        <FaRobot
-                          className="mt-1 text-[#94DA49] flex-shrink-0"
-                          size={14}
-                        />
+                        <div className="bg-[#94DA49] p-1 rounded-full flex-shrink-0 mt-1">
+                          <FaRobot className="text-white" size={10} />
+                        </div>
                       ) : (
-                        <FaUser className="mt-1 flex-shrink-0" size={14} />
+                        <div className="bg-white bg-opacity-20 p-1 rounded-full flex-shrink-0 mt-1">
+                          <FaUser className="text-white" size={10} />
+                        </div>
                       )}
                       <div className="flex-1 min-w-0">
                         <MessageContent message={message} />
@@ -318,8 +317,10 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-white p-3 rounded-lg border border-gray-200 flex items-center space-x-2">
-                    <FaRobot className="text-[#94DA49]" size={14} />
+                  <div className="bg-white p-3 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-2">
+                    <div className="bg-[#94DA49] p-1 rounded-full">
+                      <FaRobot className="text-white" size={10} />
+                    </div>
                     <div className="flex space-x-1">
                       <motion.div
                         className="w-2 h-2 bg-[#94DA49] rounded-full"
@@ -331,7 +332,7 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                         }}
                       />
                       <motion.div
-                        className="w-2 h-2 bg-[#FFE060] rounded-full"
+                        className="w-2 h-2 bg-gray-400 rounded-full"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{
                           repeat: Infinity,
@@ -340,7 +341,7 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                         }}
                       />
                       <motion.div
-                        className="w-2 h-2 bg-[#FF6262] rounded-full"
+                        className="w-2 h-2 bg-gray-300 rounded-full"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{
                           repeat: Infinity,
@@ -363,8 +364,8 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about Fokus drinks, ingredients, ordering..."
-                  className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#94DA49] focus:border-transparent text-sm"
+                  placeholder="Type your question here..."
+                  className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#94DA49] focus:border-transparent text-sm bg-gray-50 hover:bg-white transition-colors cursor-text"
                   disabled={isLoading}
                 />
                 <motion.button
@@ -372,13 +373,16 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                   disabled={isLoading || !inputMessage.trim()}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#FF6262] to-[#94DA49] text-white p-2 rounded-lg hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-[#94DA49] hover:bg-[#7bc143] text-white p-3 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm hover:shadow-md"
                 >
                   <FaPaperPlane size={16} />
                 </motion.button>
               </div>
-              <p className="text-xs text-gray-500 mt-2 text-center">
-                Fokus Customer Assistant
+              <p className="text-xs text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
+                <span>•</span>
+                <span>Powered by AI</span>
+                <span>•</span>
+                <span>Fokus Customer Assistant</span>
               </p>
             </div>
           </motion.div>
