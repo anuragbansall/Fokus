@@ -46,7 +46,7 @@ function ReviewsSection() {
         </StaggerItem>
 
         <StaggerItem>
-          <div className="max-w-7xl mx-auto py-6">
+          <div className="mx-auto py-6">
             <MediaCarousel>
               {reviews.map((review, index) => (
                 <motion.div
