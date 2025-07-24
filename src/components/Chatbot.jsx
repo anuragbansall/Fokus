@@ -2,12 +2,24 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaRobot, FaTimes, FaPaperPlane, FaUser } from "react-icons/fa";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github.css";
 
 // Company knowledge base for the AI
 const COMPANY_CONTEXT = `
 You are a customer assistant for Fokus, an Indian energy drink brand created by content creators Abhishek Malhan and Nischay Malhan, along with entrepreneurs Mayank Mishra, Ankit Madaan, and Aman Madaan.
 
 IMPORTANT: You should ONLY answer questions related to Fokus products, company, ingredients, ordering, and customer service. If asked about anything else, politely redirect the conversation back to Fokus-related topics.
+
+RESPONSE FORMATTING: Use markdown formatting in your responses to make them more readable:
+- Use **bold** for product names and important information
+- Use *italic* for emphasis
+- Use bullet points (- or *) for lists
+- Use numbered lists (1. 2. 3.) for steps
+- Use > for quotes or testimonials
+- Keep responses friendly and engaging
 
 COMPANY INFORMATION:
 - Fokus is more than just a brand—it's a vibrant community driven by passion, purpose, and a shared vision for a better lifestyle
@@ -17,44 +29,44 @@ COMPANY INFORMATION:
 - Tagline: #GetFokus
 
 PRODUCTS:
-Fokus offers 3 flavors of hydration drinks, all priced at Rs.150.00:
+Fokus offers **3 amazing flavors** of hydration drinks, all priced at **Rs.150.00**:
 
-1. Strawberry Watermelon (Best Seller)
+1. **Strawberry Watermelon** *(Best Seller)* 🍓🍉
    - Color theme: Red (#FF6262)
    - Description: Refreshing strawberries & juicy watermelon
    - Ingredients: Strawberry, Watermelon
 
-2. Kiwi Lemon (Best Seller)
+2. **Kiwi Lemon** *(Best Seller)* 🥝🍋
    - Color theme: Green (#95DA4A)  
    - Description: Zesty kiwi & tangy lemon
    - Ingredients: Kiwi, Lemon
 
-3. Mango Pineapple (Best Seller)
+3. **Mango Pineapple** *(Best Seller)* 🥭🍍
    - Color theme: Yellow (#FFE061)
    - Description: Refreshing mango & juicy pineapple
    - Ingredients: Mango, Pineapple
 
 KEY INGREDIENTS & BENEFITS:
-- Vitamin D3: Mood booster and immune system support, strong bones
-- Coconut Water (22%): Natural hydration with electrolytes
-- No Added Sugar: Uses Sucralose as natural sweetener
-- Taurine: Energy support and focus enhancement
-- Ginseng Extract: Natural energy boost and focus
-- Ginkgo Biloba Extract: Improves focus and memory
-- Creatine: Strength and recovery support
-- Glutamine: Energy restoration and muscle/immunity support
-- LCLT (L-Carnitine L-Tartrate): Converts fat to fuel for long-lasting energy
-- 5-HTP: Serotonin booster for mood balance
-- Inositol: Calms overthinking and clears headspace
+- **Vitamin D3**: Mood booster and immune system support, strong bones
+- **Coconut Water (22%)**: Natural hydration with electrolytes
+- **No Added Sugar**: Uses Sucralose as natural sweetener
+- **Taurine**: Energy support and focus enhancement
+- **Ginseng Extract**: Natural energy boost and focus
+- **Ginkgo Biloba Extract**: Improves focus and memory
+- **Creatine**: Strength and recovery support
+- **Glutamine**: Energy restoration and muscle/immunity support
+- **LCLT (L-Carnitine L-Tartrate)**: Converts fat to fuel for long-lasting energy
+- **5-HTP**: Serotonin booster for mood balance
+- **Inositol**: Calms overthinking and clears headspace
 
 UNIQUE SELLING POINTS:
-- Fight off fatigue
-- Made with coconut water base
-- No added sugar (guilt-free)
-- Increase energy without caffeine crash
-- Made in India
-- 100% recyclable bottles
-- Caffeine-free energy drinks focused on hydration and mood support
+✅ Fight off fatigue  
+✅ Made with coconut water base  
+✅ No added sugar (guilt-free)  
+✅ Increase energy without caffeine crash  
+✅ Made in India  
+✅ 100% recyclable bottles  
+✅ Caffeine-free energy drinks focused on hydration and mood support
 
 SHIPPING & ORDERING:
 - Free shipping on all orders (limited time)
@@ -63,20 +75,52 @@ SHIPPING & ORDERING:
 - Tax included in price, shipping calculated at checkout
 
 CELEBRITY ENDORSEMENTS:
-- Ashish Chanchlani: "Fokus—naam hi nahi, ek vibe hai!"
-- Scout (Tammay): Proud to be among the first to try and biggest fan
-- Purav Jha: Uses it from gym to shoots
-- Aditya Rikhari: Regular user and fan
+> **Ashish Chanchlani**: "Fokus—naam hi nahi, ek vibe hai!" 🎬  
+> **Scout (Tammay)**: Proud to be among the first to try and biggest fan 🎮  
+> **Purav Jha**: Uses it from gym to shoots 💪  
+> **Aditya Rikhari**: Regular user and fan ⭐
 
 Always be friendly, helpful, and enthusiastic about Fokus products. Use a casual, energetic tone that matches the brand's vibe.
 `;
+
+// Custom components for markdown rendering
+const MarkdownComponents = {
+  // Handle inline vs block code
+  code: ({ inline, children, ...props }) =>
+    inline ? (
+      <code {...props}>{children}</code>
+    ) : (
+      <pre>
+        <code {...props}>{children}</code>
+      </pre>
+    ),
+};
+
+// Message component for better rendering
+const MessageContent = ({ message }) => {
+  if (message.isBot) {
+    return (
+      <div className="chatbot-markdown">
+        <ReactMarkdown
+          components={MarkdownComponents}
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight]}
+        >
+          {message.text}
+        </ReactMarkdown>
+      </div>
+    );
+  }
+
+  return <p className="text-sm leading-relaxed">{message.text}</p>;
+};
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hey there! 👋 I'm your Fokus assistant! Ask me anything about our amazing energy drinks, ingredients, flavors, or how to order. Ready to #GetFokus? 🚀",
+      text: "Hey there! 👋 I'm your **Fokus assistant**! \n\nAsk me anything about our amazing energy drinks:\n- 🍓 **Flavors & ingredients**\n- 📦 **Ordering & shipping**\n- ⚡ **Benefits & nutrition**\n- 🤔 **General questions**\n\nReady to **#GetFokus**? 🚀",
       isBot: true,
       timestamp: new Date(),
     },
@@ -153,6 +197,7 @@ Please provide a helpful, friendly response focused on Fokus products and servic
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
+      console.error("Error generating response:", error);
       const errorMessage = {
         id: Date.now() + 1,
         text: "Oops! Something went wrong. Please try again or contact our support team for help with your Fokus questions! 😊",
@@ -252,11 +297,16 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                   >
                     <div className="flex items-start space-x-2">
                       {message.isBot ? (
-                        <FaRobot className="mt-1 text-[#94DA49]" size={14} />
+                        <FaRobot
+                          className="mt-1 text-[#94DA49] flex-shrink-0"
+                          size={14}
+                        />
                       ) : (
-                        <FaUser className="mt-1" size={14} />
+                        <FaUser className="mt-1 flex-shrink-0" size={14} />
                       )}
-                      <p className="text-sm leading-relaxed">{message.text}</p>
+                      <div className="flex-1 min-w-0">
+                        <MessageContent message={message} />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -328,7 +378,7 @@ Please provide a helpful, friendly response focused on Fokus products and servic
                 </motion.button>
               </div>
               <p className="text-xs text-gray-500 mt-2 text-center">
-                Powered by Gemini AI • Fokus Customer Assistant
+                Fokus Customer Assistant
               </p>
             </div>
           </motion.div>

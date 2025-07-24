@@ -64,3 +64,65 @@
     transform: translateX(100%);
   }
 }
+
+/* Chatbot Markdown Styling */
+.chatbot-markdown {
+  @apply text-sm leading-relaxed;
+}
+
+.chatbot-markdown p {
+  @apply mb-2 last:mb-0;
+}
+
+.chatbot-markdown ul {
+  @apply list-disc list-inside mb-2 space-y-1;
+}
+
+.chatbot-markdown ol {
+  @apply list-decimal list-inside mb-2 space-y-1;
+}
+
+.chatbot-markdown li {
+  @apply text-sm;
+}
+
+.chatbot-markdown strong {
+  @apply font-semibold text-green-500;
+}
+
+.chatbot-markdown em {
+  @apply italic text-gray-600;
+}
+
+.chatbot-markdown h1 {
+  @apply text-lg font-bold mb-2 text-red-400;
+}
+
+.chatbot-markdown h2 {
+  @apply text-base font-bold mb-2 text-green-500;
+}
+
+.chatbot-markdown h3 {
+  @apply text-sm font-semibold mb-1 text-yellow-400;
+}
+
+.chatbot-markdown code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-xs font-mono text-red-400;
+}
+
+.chatbot-markdown pre {
+  @apply bg-gray-100 p-2 rounded text-xs font-mono overflow-x-auto mb-2;
+}
+
+.chatbot-markdown blockquote {
+  @apply border-l-4 border-green-500 pl-3 py-1 bg-gray-50 italic text-gray-700 mb-2;
+}
+
+.chatbot-markdown a {
+  @apply text-green-500 hover:text-red-400 underline transition-colors;
+}
+
+/* Highlight.js theme overrides for chatbot */
+.chatbot-markdown .hljs {
+  @apply bg-gray-100 text-gray-800;
+}
