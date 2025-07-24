@@ -1,4 +1,5 @@
 import React from "react";
+import { Analytics } from "@vercel/analytics/next";
 import Navbar from "./components/Navbar";
 import Container from "./components/container";
 import Footer from "./components/Footer";
@@ -17,6 +18,7 @@ function App() {
       </main>
       <Footer />
       <Chatbot />
+      <Analytics />
     </div>
   );
 }
