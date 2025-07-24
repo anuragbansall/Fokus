@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="bg-[#F5F5DC] min-h-screen flex flex-col overflow-x-hidden">
       <Navbar />
+      <div className="h-18 lg:h-22" />
       <main className="flex-grow">
         <Container>
           <AppRoutes />

@@ -16,6 +16,8 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartAnimating, setIsCartAnimating] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const dispatch = useDispatch();
   const { addToast } = useToast();
@@ -30,6 +32,22 @@ function Navbar() {
       return () => clearTimeout(timer);
     }
   }, [cartTotalQuantity]);
+
+  // Show/hide navbar on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+        setShowNavbar(false); // Scrolling down
+      } else {
+        setShowNavbar(true); // Scrolling up
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -56,7 +74,6 @@ function Navbar() {
             <FiUser />
             <span className="hidden md:inline text-sm">{user?.name}</span>
           </button>
-
           <AnimatePresence>
             {showUserMenu && (
               <motion.div
@@ -107,7 +124,11 @@ function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-[999] w-full bg-[#F5F5DC] shadow-md">
+    <header
+      className={`fixed top-0 z-[999] w-full bg-[#F5F5DC] shadow-md transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-4">
         {/* Hamburger Icon for Mobile */}
         <div className="flex items-center lg:hidden">
