@@ -16,7 +16,9 @@ function ProductsPage() {
     <PageTransition>
       <main>
         {/* Hero Section */}
-        <HeroSection />
+        <FadeInWhenVisible delay={0}>
+          <HeroSection />
+        </FadeInWhenVisible>
 
         {/* Benefits Section */}
         <FadeInWhenVisible delay={0.1}>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "../StaggerAnimation";
 import Dropdown from "../Dropdown";
 
 function FAQSection() {
@@ -32,11 +34,27 @@ function FAQSection() {
 
   return (
     <section className="p-8 my-12">
-      <h2 className="text-4xl font-semibold text-center mb-8">
-        Frequently Asked titles
-      </h2>
+      <StaggerContainer>
+        <StaggerItem>
+          <h2 className="text-4xl font-semibold text-center mb-8">
+            Frequently Asked titles
+          </h2>
+        </StaggerItem>
 
-      <Dropdown options={faqs} />
+        <StaggerItem>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            viewport={{ once: true }}
+          >
+            <Dropdown options={faqs} />
+          </motion.div>
+        </StaggerItem>
+      </StaggerContainer>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import FadeInWhenVisible from "../components/FadeInWhenVisible";
 import ProductSection from "../components/productDetail/ProductSection";
 import IngredientsSection from "../components/productDetail/IngredientsSection";
 import SplashSection from "../components/productDetail/SplashSection";
@@ -50,22 +51,28 @@ const ProductDetailPage = () => {
   return (
     <main className="bg-white">
       {/* Main product section */}
-      <ProductSection
-        THUMBNAIL={THUMBNAIL}
-        PRODUCT={PRODUCT}
-        backgroundColor={backgroundColor}
-      />
+      <FadeInWhenVisible delay={0}>
+        <ProductSection
+          THUMBNAIL={THUMBNAIL}
+          PRODUCT={PRODUCT}
+          backgroundColor={backgroundColor}
+        />
+      </FadeInWhenVisible>
 
       {/* Ingredients section */}
-      <IngredientsSection
-        INGREDIENTS={INGREDIENTS}
-        INGREDIENTS_IMAGE={INGREDIENTS_IMAGE}
-        FEATURES={FEATURES}
-        backgroundColor={backgroundColor}
-      />
+      <FadeInWhenVisible delay={0.1}>
+        <IngredientsSection
+          INGREDIENTS={INGREDIENTS}
+          INGREDIENTS_IMAGE={INGREDIENTS_IMAGE}
+          FEATURES={FEATURES}
+          backgroundColor={backgroundColor}
+        />
+      </FadeInWhenVisible>
 
       {/* Splash Image section */}
-      <SplashSection splashImage={SPLASH_IMAGE} />
+      <FadeInWhenVisible delay={0.2}>
+        <SplashSection splashImage={SPLASH_IMAGE} />
+      </FadeInWhenVisible>
     </main>
   );
 };
