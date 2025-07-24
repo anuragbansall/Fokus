@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "../StaggerAnimation";
 import ReviewCard from "../ReviewCard";
 import MediaCarousel from "../MediaCarousel";
 import ashishChanchlaniImage from "../../assets/ashish-chanchlani.jpg";
@@ -36,25 +38,47 @@ function ReviewsSection() {
 
   return (
     <section className="w-full p-6 border-t-100 border-[#FFE060]">
-      <h2 className="text-4xl font-semibold my-8 text-center leading-snug">
-        What Your Favourites Say
-      </h2>
+      <StaggerContainer>
+        <StaggerItem>
+          <h2 className="text-4xl font-semibold my-8 text-center leading-snug">
+            What Your Favourites Say
+          </h2>
+        </StaggerItem>
 
-      <div className="max-w-7xl mx-auto py-6">
-        <MediaCarousel>
-          {reviews.map((review, index) => (
-            <ReviewCard
-              key={index}
-              name={review.name}
-              image={review.image}
-              reviewText={review.reviewText}
-              style={{
-                boxShadow: "2.5px 2.5px 0 5px #ffffff",
-              }}
-            />
-          ))}
-        </MediaCarousel>
-      </div>
+        <StaggerItem>
+          <div className="max-w-7xl mx-auto py-6">
+            <MediaCarousel>
+              {reviews.map((review, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+                  whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  viewport={{ once: true }}
+                  whileHover={{
+                    scale: 1.05,
+                    rotateY: -5,
+                    transition: { duration: 0.3 },
+                  }}
+                >
+                  <ReviewCard
+                    name={review.name}
+                    image={review.image}
+                    reviewText={review.reviewText}
+                    style={{
+                      boxShadow: "2.5px 2.5px 0 5px #ffffff",
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </MediaCarousel>
+          </div>
+        </StaggerItem>
+      </StaggerContainer>
     </section>
   );
 }

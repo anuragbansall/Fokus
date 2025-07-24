@@ -14,7 +14,9 @@ function HomePage() {
   return (
     <PageTransition>
       <main className="w-full min-h-screen">
-        <HeroSection />
+        <FadeInWhenVisible delay={0}>
+          <HeroSection />
+        </FadeInWhenVisible>
         <FadeInWhenVisible delay={0.1}>
           <FavoritesSection />
         </FadeInWhenVisible>

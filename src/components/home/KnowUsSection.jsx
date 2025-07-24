@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import knowUsImage from "../../assets/know-us.png";
 import abhishekLeftImage from "../../assets/abhishek-left.png";
 import nischayRightImage from "../../assets/nischay-right.png";
@@ -9,11 +10,18 @@ import mangoImage from "../../assets/mango.png";
 function KnowUsSection() {
   return (
     <section className="w-full p-6 py-18 bg-[#94DA49] flex flex-col gap-12 items-center justify-center overflow-hidden">
-      <div
+      <motion.div
         className="relative w-full sm:min-h-[550px] max-w-6xl mx-auto flex flex-col items-center justify-center gap-y-12 bg-[#B2F56F] pt-8 md:p-8 rounded-lg shadow-lg"
         style={{
           boxShadow: "10px 10px 0 20px #ffffff",
         }}
+        initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+        whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        viewport={{ once: true }}
       >
         {/* People Images */}
         <img
@@ -62,7 +70,7 @@ function KnowUsSection() {
           loading="lazy"
           className="md:hidden block max-w-full h-auto relative z-30"
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
