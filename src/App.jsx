@@ -1,5 +1,5 @@
 import React from "react";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Container from "./components/container";
 import Footer from "./components/Footer";
