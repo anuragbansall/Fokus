@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Container from "./components/container";
 import Footer from "./components/Footer";
+import Chatbot from "./components/Chatbot";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         </Container>
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }
