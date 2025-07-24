@@ -11,10 +11,7 @@ function KnowUsSection() {
   return (
     <section className="w-full p-6 py-18 bg-[#94DA49] flex flex-col gap-12 items-center justify-center overflow-hidden">
       <motion.div
-        className="relative w-full sm:min-h-[550px] max-w-6xl mx-auto flex flex-col items-center justify-center gap-y-12 bg-[#B2F56F] pt-8 md:p-8 rounded-lg shadow-lg"
-        style={{
-          boxShadow: "10px 10px 0 20px #ffffff",
-        }}
+        className="relative w-full sm:min-h-[550px] max-w-6xl mx-auto flex flex-col items-center justify-center gap-y-12 bg-[#B2F56F] pt-8 md:p-8 rounded-lg shadow-[5px_5px_0_10px_#ffffff] md:shadow-[10px_10px_0_20px_#ffffff]"
         initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
         whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
         transition={{

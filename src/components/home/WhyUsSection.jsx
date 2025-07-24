@@ -49,10 +49,7 @@ function WhyUsSection() {
 
         <StaggerItem>
           <motion.div
-            className="relative max-w-6xl mx-auto my-12 p-4 bg-white rounded-lg shadow-lg overflow-x-auto md:overflow-visible scrollbar-hide"
-            style={{
-              boxShadow: "10px 10px 0 20px #ffc53e",
-            }}
+            className="relative max-w-6xl mx-auto my-12 p-4 bg-white rounded-lg overflow-x-auto md:overflow-visible scrollbar-hide shadow-[5px_5px_0_10px_#ffc53e] md:shadow-[10px_10px_0_20px_#ffc53e]"
             initial={{ opacity: 0, y: 50, rotateX: -15 }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{

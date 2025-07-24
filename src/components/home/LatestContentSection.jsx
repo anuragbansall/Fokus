@@ -46,10 +46,7 @@ function LatestContentSection() {
 
         <StaggerItem>
           <motion.div
-            className="relative my-18 mx-auto w-full max-w-[800px] aspect-video rounded-lg z-10 overflow-hidden"
-            style={{
-              boxShadow: "10px 10px 0 20px #ffc53e",
-            }}
+            className="relative my-18 mx-auto w-full max-w-[800px] aspect-video rounded-lg z-10 overflow-hidden shadow-[5px_5px_0_10px_#ffc53e] md:shadow-[10px_10px_0_20px_#ffc53e]"
             initial={{ opacity: 0, scale: 0.8, rotateX: 15 }}
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
             transition={{
