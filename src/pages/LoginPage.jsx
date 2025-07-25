@@ -5,6 +5,7 @@ import { loginStart, loginSuccess, loginFailure } from "../store/authSlice";
 import { useToast } from "../hooks/useToast";
 import Button from "../components/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import PageTransition from "../components/PageTransition";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +65,8 @@ const LoginPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#F5F5DC] flex items-center justify-center p-6">
+    <PageTransition>
+      <main className="min-h-screen bg-[#F5F5DC] flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <div
           className="bg-white rounded-lg p-8 shadow-lg"
@@ -161,6 +163,7 @@ const LoginPage = () => {
         </div>
       </div>
     </main>
+    </PageTransition>
   );
 };
 

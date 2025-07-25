@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const PageTransition = ({ children, className = "" }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to top when component mounts (page changes)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [location.pathname]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

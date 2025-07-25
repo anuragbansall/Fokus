@@ -5,6 +5,7 @@ import { clearCart } from "../store/cartSlice";
 import { useToast } from "../hooks/useToast";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import PageTransition from "../components/PageTransition";
 import {
   FiUser,
   FiMapPin,
@@ -383,7 +384,8 @@ const AccountPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#F5F5DC] p-6">
+    <PageTransition>
+      <main className="min-h-screen bg-[#F5F5DC] p-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">My Account</h1>
@@ -438,6 +440,7 @@ const AccountPage = () => {
         </div>
       </div>
     </main>
+    </PageTransition>
   );
 };
 

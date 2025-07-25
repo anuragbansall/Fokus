@@ -5,6 +5,7 @@ import FadeInWhenVisible from "../components/FadeInWhenVisible";
 import ProductSection from "../components/productDetail/ProductSection";
 import IngredientsSection from "../components/productDetail/IngredientsSection";
 import SplashSection from "../components/productDetail/SplashSection";
+import PageTransition from "../components/PageTransition";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -16,12 +17,14 @@ const ProductDetailPage = () => {
   // If product not found, show error message
   if (!product) {
     return (
-      <main>
-        <div style={{ textAlign: "center", padding: "2rem" }}>
-          <h1>Product not found</h1>
-          <p>The product you're looking for doesn't exist.</p>
-        </div>
-      </main>
+      <PageTransition>
+        <main>
+          <div style={{ textAlign: "center", padding: "2rem" }}>
+            <h1>Product not found</h1>
+            <p>The product you're looking for doesn't exist.</p>
+          </div>
+        </main>
+      </PageTransition>
     );
   }
 
@@ -49,7 +52,8 @@ const ProductDetailPage = () => {
   const SPLASH_IMAGE = product.splashImage;
 
   return (
-    <main className="bg-white">
+    <PageTransition>
+      <main className="bg-white">
       {/* Main product section */}
       <FadeInWhenVisible delay={0}>
         <ProductSection
@@ -74,6 +78,7 @@ const ProductDetailPage = () => {
         <SplashSection splashImage={SPLASH_IMAGE} />
       </FadeInWhenVisible>
     </main>
+    </PageTransition>
   );
 };
 

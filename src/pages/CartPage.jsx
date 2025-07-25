@@ -9,6 +9,7 @@ import {
 import Button from "../components/Button";
 import { FiMinus, FiPlus, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import PageTransition from "../components/PageTransition";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -34,28 +35,31 @@ const CartPage = () => {
 
   if (items.length === 0) {
     return (
-      <main className="min-h-screen bg-[#F5F5DC] p-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-8">Your Cart</h1>
-          <div
-            className="bg-white rounded-lg p-12 text-center"
-            style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
-          >
-            <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
-            <p className="text-gray-600 mb-6">
-              Add some delicious Fokus drinks to get started!
-            </p>
-            <Link to="/products">
-              <Button className="px-8 py-3 text-lg">Shop Now</Button>
-            </Link>
+      <PageTransition>
+        <main className="min-h-screen bg-[#F5F5DC] p-6">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl font-bold text-center mb-8">Your Cart</h1>
+            <div
+              className="bg-white rounded-lg p-12 text-center"
+              style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
+            >
+              <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
+              <p className="text-gray-600 mb-6">
+                Add some delicious Fokus drinks to get started!
+              </p>
+              <Link to="/products">
+                <Button className="px-8 py-3 text-lg">Shop Now</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </PageTransition>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5DC] p-6">
+    <PageTransition>
+      <main className="min-h-screen bg-[#F5F5DC] p-6">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">
@@ -167,6 +171,7 @@ const CartPage = () => {
         </div>
       </div>
     </main>
+    </PageTransition>
   );
 };
 
