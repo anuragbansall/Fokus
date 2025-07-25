@@ -148,6 +148,20 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Prevent background scrolling when chatbot is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup function to restore scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const generateResponse = async (userMessage) => {
     if (!genAI) {
       return "Sorry, I'm having trouble connecting right now. Please try again later or contact our support team directly.";
@@ -227,7 +241,8 @@ Please provide a helpful, friendly response focused on Fokus products and servic
         }`}
         whileHover={{
           scale: 1.05,
-          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+          boxShadow:
+            "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, scale: 0 }}
@@ -247,145 +262,160 @@ Please provide a helpful, friendly response focused on Fokus products and servic
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-6 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden backdrop-blur-sm"
-          >
-            {/* Header */}
-            <div className="bg-white border-b border-gray-200 text-gray-800 p-4 flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="bg-[#94DA49] p-2 rounded-full">
-                  <FaRobot size={18} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">Fokus Assistant</h3>
-                  <p className="text-xs text-gray-500">
-                    Here to help you #GetFokus
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100 cursor-pointer"
-              >
-                <FaTimes size={16} />
-              </button>
-            </div>
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/40 z-40"
+              onClick={() => setIsOpen(false)}
+            />
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gradient-to-b from-gray-50 to-white">
-              {messages.map((message) => (
-                <motion.div
-                  key={message.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${
-                    message.isBot ? "justify-start" : "justify-end"
-                  }`}
+            {/* Chat Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed bottom-6 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden backdrop-blur-sm"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="bg-white border-b border-gray-200 text-gray-800 p-4 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="bg-[#94DA49] p-2 rounded-full">
+                    <FaRobot size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      Fokus Assistant
+                    </h3>
+                    <p className="text-xs text-gray-500">
+                      Here to help you #GetFokus
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100 cursor-pointer"
                 >
-                  <div
-                    className={`max-w-[85%] p-3 rounded-2xl transition-all duration-200 hover:shadow-md cursor-default ${
-                      message.isBot
-                        ? "bg-white text-gray-800 border border-gray-200 shadow-sm hover:border-gray-300"
-                        : "bg-[#94DA49] text-white shadow-sm hover:bg-[#7bc143]"
+                  <FaTimes size={16} />
+                </button>
+              </div>
+
+              {/* Messages */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gradient-to-b from-gray-50 to-white">
+                {messages.map((message) => (
+                  <motion.div
+                    key={message.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex ${
+                      message.isBot ? "justify-start" : "justify-end"
                     }`}
                   >
-                    <div className="flex items-start space-x-2">
-                      {message.isBot ? (
-                        <div className="bg-[#94DA49] p-1 rounded-full flex-shrink-0 mt-1">
-                          <FaRobot className="text-white" size={10} />
+                    <div
+                      className={`max-w-[85%] p-3 rounded-2xl transition-all duration-200 hover:shadow-md cursor-default ${
+                        message.isBot
+                          ? "bg-white text-gray-800 border border-gray-200 shadow-sm hover:border-gray-300"
+                          : "bg-[#94DA49] text-white shadow-sm hover:bg-[#7bc143]"
+                      }`}
+                    >
+                      <div className="flex items-start space-x-2">
+                        {message.isBot ? (
+                          <div className="bg-[#94DA49] p-1 rounded-full flex-shrink-0 mt-1">
+                            <FaRobot className="text-white" size={10} />
+                          </div>
+                        ) : (
+                          <div className="bg-white bg-opacity-20 p-1 rounded-full flex-shrink-0 mt-1">
+                            <FaUser className="text-white" size={10} />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <MessageContent message={message} />
                         </div>
-                      ) : (
-                        <div className="bg-white bg-opacity-20 p-1 rounded-full flex-shrink-0 mt-1">
-                          <FaUser className="text-white" size={10} />
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <MessageContent message={message} />
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
 
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex justify-start"
-                >
-                  <div className="bg-white p-3 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-2">
-                    <div className="bg-[#94DA49] p-1 rounded-full">
-                      <FaRobot className="text-white" size={10} />
+                {isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex justify-start"
+                  >
+                    <div className="bg-white p-3 rounded-2xl border border-gray-200 shadow-sm flex items-center space-x-2">
+                      <div className="bg-[#94DA49] p-1 rounded-full">
+                        <FaRobot className="text-white" size={10} />
+                      </div>
+                      <div className="flex space-x-1">
+                        <motion.div
+                          className="w-2 h-2 bg-[#94DA49] rounded-full"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 0.8,
+                            delay: 0,
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 bg-gray-400 rounded-full"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 0.8,
+                            delay: 0.2,
+                          }}
+                        />
+                        <motion.div
+                          className="w-2 h-2 bg-gray-300 rounded-full"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 0.8,
+                            delay: 0.4,
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className="flex space-x-1">
-                      <motion.div
-                        className="w-2 h-2 bg-[#94DA49] rounded-full"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 0.8,
-                          delay: 0,
-                        }}
-                      />
-                      <motion.div
-                        className="w-2 h-2 bg-gray-400 rounded-full"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 0.8,
-                          delay: 0.2,
-                        }}
-                      />
-                      <motion.div
-                        className="w-2 h-2 bg-gray-300 rounded-full"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 0.8,
-                          delay: 0.4,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input */}
-            <div className="p-4 border-t border-gray-200 bg-white">
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Type your question here..."
-                  className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#94DA49] focus:border-transparent text-sm bg-gray-50 hover:bg-white transition-colors cursor-text"
-                  disabled={isLoading}
-                />
-                <motion.button
-                  onClick={handleSendMessage}
-                  disabled={isLoading || !inputMessage.trim()}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#94DA49] hover:bg-[#7bc143] text-white p-3 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm hover:shadow-md"
-                >
-                  <FaPaperPlane size={16} />
-                </motion.button>
+                  </motion.div>
+                )}
+                <div ref={messagesEndRef} />
               </div>
-              <p className="text-xs text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
-                <span>•</span>
-                <span>Powered by AI</span>
-                <span>•</span>
-                <span>Fokus Customer Assistant</span>
-              </p>
-            </div>
-          </motion.div>
+
+              {/* Input */}
+              <div className="p-4 border-t border-gray-200 bg-white">
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={inputMessage}
+                    onChange={(e) => setInputMessage(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Type your question here..."
+                    className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#94DA49] focus:border-transparent text-sm bg-gray-50 hover:bg-white transition-colors cursor-text"
+                    disabled={isLoading}
+                  />
+                  <motion.button
+                    onClick={handleSendMessage}
+                    disabled={isLoading || !inputMessage.trim()}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-[#94DA49] hover:bg-[#7bc143] text-white p-3 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm hover:shadow-md"
+                  >
+                    <FaPaperPlane size={16} />
+                  </motion.button>
+                </div>
+                <p className="text-xs text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
+                  <span>•</span>
+                  <span>Powered by AI</span>
+                  <span>•</span>
+                  <span>Fokus Customer Assistant</span>
+                </p>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -54,30 +54,30 @@ const ProductDetailPage = () => {
   return (
     <PageTransition>
       <main className="bg-white">
-      {/* Main product section */}
-      <FadeInWhenVisible delay={0}>
-        <ProductSection
-          THUMBNAIL={THUMBNAIL}
-          PRODUCT={PRODUCT}
-          backgroundColor={backgroundColor}
-        />
-      </FadeInWhenVisible>
+        {/* Main product section */}
+        <FadeInWhenVisible delay={0}>
+          <ProductSection
+            THUMBNAIL={THUMBNAIL}
+            PRODUCT={PRODUCT}
+            backgroundColor={backgroundColor}
+          />
+        </FadeInWhenVisible>
 
-      {/* Ingredients section */}
-      <FadeInWhenVisible delay={0.1}>
-        <IngredientsSection
-          INGREDIENTS={INGREDIENTS}
-          INGREDIENTS_IMAGE={INGREDIENTS_IMAGE}
-          FEATURES={FEATURES}
-          backgroundColor={backgroundColor}
-        />
-      </FadeInWhenVisible>
+        {/* Ingredients section */}
+        <FadeInWhenVisible delay={0.1}>
+          <IngredientsSection
+            INGREDIENTS={INGREDIENTS}
+            INGREDIENTS_IMAGE={INGREDIENTS_IMAGE}
+            FEATURES={FEATURES}
+            backgroundColor={backgroundColor}
+          />
+        </FadeInWhenVisible>
 
-      {/* Splash Image section */}
-      <FadeInWhenVisible delay={0.2}>
-        <SplashSection splashImage={SPLASH_IMAGE} />
-      </FadeInWhenVisible>
-    </main>
+        {/* Splash Image section */}
+        <FadeInWhenVisible delay={0.2}>
+          <SplashSection splashImage={SPLASH_IMAGE} />
+        </FadeInWhenVisible>
+      </main>
     </PageTransition>
   );
 };

@@ -386,60 +386,60 @@ const AccountPage = () => {
   return (
     <PageTransition>
       <main className="min-h-screen bg-[#F5F5DC] p-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">My Account</h1>
-          <p className="text-gray-600">Welcome back, {user.name}!</p>
-        </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-2">My Account</h1>
+            <p className="text-gray-600">Welcome back, {user.name}!</p>
+          </div>
 
-        <div className="grid lg:grid-cols-4 gap-6">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div
-              className="bg-white rounded-lg p-6"
-              style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                  <FiUser className="text-xl" />
+          <div className="grid lg:grid-cols-4 gap-6">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div
+                className="bg-white rounded-lg p-6"
+                style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <FiUser className="text-xl" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{user.name}</h3>
+                    <p className="text-sm text-gray-600">{user.email}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold">{user.name}</h3>
-                  <p className="text-sm text-gray-600">{user.email}</p>
-                </div>
+
+                <nav className="space-y-2">
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left transition-colors ${
+                        activeTab === tab.id
+                          ? "bg-black text-white"
+                          : "hover:bg-gray-100"
+                      }`}
+                    >
+                      {tab.icon}
+                      {tab.label}
+                    </button>
+                  ))}
+                </nav>
               </div>
-
-              <nav className="space-y-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left transition-colors ${
-                      activeTab === tab.id
-                        ? "bg-black text-white"
-                        : "hover:bg-gray-100"
-                    }`}
-                  >
-                    {tab.icon}
-                    {tab.label}
-                  </button>
-                ))}
-              </nav>
             </div>
-          </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <div
-              className="bg-white rounded-lg p-6 min-h-[600px]"
-              style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
-            >
-              {renderTabContent()}
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              <div
+                className="bg-white rounded-lg p-6 min-h-[600px]"
+                style={{ boxShadow: "2.5px 2.5px 0 5px #000000cc" }}
+              >
+                {renderTabContent()}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
     </PageTransition>
   );
 };
