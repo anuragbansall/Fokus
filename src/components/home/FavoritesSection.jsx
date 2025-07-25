@@ -1,14 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { StaggerContainer, StaggerItem } from "../StaggerAnimation";
 
 function FavoritesSection() {
   const favoriteBottles = useSelector((state) => state.products.products);
+  const navigate = useNavigate();
 
   const [selectedBottle, setSelectedBottle] = useState(null);
 
   const bottleRefs = useRef([]);
+
+  // Handle bottle click to navigate to product detail page
+  const handleBottleClick = (bottleId) => {
+    navigate(`/products/${bottleId}`);
+  };
 
   // IntersectionObserver for mobile scroll
   useEffect(() => {
@@ -66,6 +73,7 @@ function FavoritesSection() {
                   relative flex-shrink-0 group cursor-pointer w-full md:w-fit
                   snap-center md:snap-none
                 "
+                onClick={() => handleBottleClick(bottle.id)}
                 onMouseEnter={() =>
                   window.innerWidth >= 768 && setSelectedBottle(bottle)
                 }
